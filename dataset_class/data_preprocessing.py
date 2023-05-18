@@ -1,4 +1,4 @@
-import re, gc
+import re, gc, glob
 import pandas as pd
 import numpy as np
 import torch
@@ -10,6 +10,7 @@ from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
 from albumentations.pytorch import ToTensorV2
+from tqdm.auto import tqdm
 
 
 def load_style_embedding():
@@ -93,11 +94,43 @@ def mls_kfold(df: pd.DataFrame, cfg) -> pd.DataFrame:
     return df
 
 
+def read_notebook(path) -> pd.DataFrame:
+    """
+    Make DataFrame which is subset of whole dataset from JSON file
+    Options:
+        pd.DataFrame.assign: make new column from original column with some transformed
+    """
+    df = (
+        pd.read_json(
+            path,
+            dtype={'cell_type': 'category', 'source': 'str'})
+        .assign(id=path.stem)
+        .rename_axis('cell_id')
+    )
+    return df
+
+
+def make_train_df(json_path: str) -> pd.DataFrame:
+    """ Make DataFrame of whole dataset """
+    json_list = glob.glob(f'{json_path}/*.json')
+    tmp_list = [read_notebook(path) for path in tqdm(json_list)]
+    df = (
+        pd.concat(tmp_list)
+        .set_index('id', append=True)
+        .swaplevel()
+        .sort_index(level='id', sort_remaining=False)
+    )
+    return df
+
+
 def load_data(data_path: str) -> pd.DataFrame:
     """
     Load data_folder from csv file like as train.csv, test.csv, val.csv
     """
-    df = pd.read_csv(data_path)
+    df = pd.read_csv(
+        data_path,
+        keep_default_na=False  #
+    )
     return df
 
 

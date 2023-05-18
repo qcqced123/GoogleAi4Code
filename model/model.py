@@ -7,6 +7,7 @@ from transformers import AutoConfig, AutoModel
 from model.model_utils import freeze, reinit_topk
 
 
+# Open AI CLIP Model with Style Embedding from Style Extractor
 class SD2Model(nn.Module):
     """
     Model class for Open AI CLIP
