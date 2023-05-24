@@ -1,51 +1,29 @@
-import re, gc, glob
+import re, gc, glob, io, tokenize, markdown
 import pandas as pd
 import numpy as np
 import torch
-import albumentations
 import configuration as configuration
 from torch import Tensor
-from sklearn.model_selection import KFold
+from bs4 import BeautifulSoup
+from sklearn.model_selection import KFold, GroupKFold
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
-from albumentations.pytorch import ToTensorV2
 from tqdm.auto import tqdm
 
 
-def load_style_embedding():
-    """ load style-embedding table (384x384x3 by convnext_base-384)"""
-    return torch.as_tensor(torch.load('./dataset_class/embedding_table.pth'))
+def add_special_token(cfg: configuration.CFG) -> None:
+    """ Add [TAR] Token to pretrained tokenizer """
+    tar_token = '[TAR]'
+    special_tokens_dict = {'additional_special_tokens': [f'{tar_token}']}
+    cfg.tokenizer.add_special_tokens(special_tokens_dict)
+    tar_token_id = cfg.tokenizer(f'{tar_token}', add_special_tokens=False)['input_ids'][0]
+    setattr(cfg.tokenizer, 'tar_token', f'{tar_token}')
+    setattr(cfg.tokenizer, 'tar_token_id', tar_token_id)
+    cfg.tokenizer.save_pretrained(f'{cfg.checkpoint_dir}/tokenizer/')
 
 
-def clip_img_process(cfg: configuration.CFG, image: np.array) -> Tensor:
-    """
-    Preprocess Image For CLIP
-    Arges:
-        cfg: configuration.CFG, needed to load img_processor from Huggingface CLIPProcessor
-        img: image convert to np.array type
-    """
-    if not type(image) == np.ndarray:
-        raise TypeError('image must be np.ndarray type')
-
-    return torch.as_tensor(cfg.img_processor(images=image)['pixel_values'])
-
-
-def img_transform(image: np.ndarray) -> Tensor:
-    """
-    Preprocess image by albumentations
-    Args:
-        image: image convert to np.array type
-    """
-    transform = albumentations.Compose([
-        # albumentations.Resize(384, 384),
-        albumentations.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ToTensorV2()]
-    )
-    return transform(image=image)['image']
-
-
-def tokenizing(cfg: configuration.CFG, text: str):
+def tokenizing(cfg: configuration.CFG, text: str) -> any:
     """
     Preprocess text for CLIP
     Args:
@@ -65,7 +43,28 @@ def tokenizing(cfg: configuration.CFG, text: str):
     return inputs
 
 
-def kfold(df: pd.DataFrame, cfg) -> pd.DataFrame:
+def markdown_to_text(markdown_string: str) -> str:
+    """
+    Converts a markdown string to plaintext by beautifulsoup
+    md -> html -> string
+    Args:
+        markdown_string: str, markdown string
+    Reference:
+    https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
+    """
+    html = markdown.markdown(markdown_string)
+    html = re.sub(r'<pre>(.*?)</pre>', ' ', html)  # remove code snippets
+    html = re.sub(r'<code>(.*?)</code >', ' ', html)  # remove code snippets
+    soup = BeautifulSoup(html, "html.parser")  # extract text
+    text = ''.join(soup.findAll(text=True))  # extract text
+    return text
+
+
+def code_tokenizer(code: str) -> list[str]:
+    pass
+
+
+def kfold(df: pd.DataFrame, cfg: configuration.CFG) -> pd.DataFrame:
     """ KFold """
     fold = KFold(
         n_splits=cfg.n_folds,
@@ -74,6 +73,17 @@ def kfold(df: pd.DataFrame, cfg) -> pd.DataFrame:
     )
     df['fold'] = -1
     for num, (tx, vx) in enumerate(fold.split(df)):
+        df.loc[vx, "fold"] = int(num)
+    return df
+
+
+def group_kfold(df: pd.DataFrame, cfg: configuration.CFG) -> pd.DataFrame:
+    """ GroupKFold """
+    fold = GroupKFold(
+        n_splits=cfg.n_folds,
+    )
+    df['fold'] = -1
+    for num, (tx, vx) in enumerate(fold.split(X=df, y=df['pct_rank'], groups=df['ancestor_id'])):
         df.loc[vx, "fold"] = int(num)
     return df
 
@@ -132,6 +142,11 @@ def load_data(data_path: str) -> pd.DataFrame:
         keep_default_na=False  #
     )
     return df
+
+
+def get_ranks(base: pd.DataFrame, derived: list) -> list:
+    """ return cell_id's sequence rank in unique notebook_id """
+    return [base.index(d) for d in derived]
 
 
 def create_word_normalizer():

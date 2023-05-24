@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import Tensor
 from numpy import ndarray
+from bisect import bisect
 
 
 def accuracy(output, target) -> float:
@@ -124,3 +125,29 @@ class CosineSimilarity(nn.Module):
 
     def forward(self, x1: Tensor, x2: Tensor) -> Tensor:
         return F.cosine_similarity(x1, x2, self.dim, self.eps)  # need to add mean for batch
+
+
+class KendallTau(nn.Module):
+    """ Kendall Tau Score class"""
+    def __init__(self):
+        super(KendallTau, self).__init__()
+
+    @staticmethod
+    def count_inversions(predicted_rank: list) -> float:
+        inversions = 0
+        sorted_so_far = []
+        for i, u in enumerate(predicted_rank):
+            j = bisect(sorted_so_far, u)
+            inversions += i - j
+            sorted_so_far.insert(j, u)
+        return inversions
+
+    def forward(self, ground_truth: list, predictions: list) -> float:
+        total_inversions = 0
+        total_2max = 0  # twice the maximum possible inversions across all instances
+        for gt, pred in zip(ground_truth, predictions):
+            ranks = [gt.index(x) for x in pred]  # rank predicted order in terms of ground truth
+            total_inversions += self.count_inversions(ranks)
+            n = len(gt)
+            total_2max += n * (n - 1)
+        return 1 - 4 * total_inversions / total_2max

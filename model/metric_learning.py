@@ -82,15 +82,6 @@ class CLIPMultipleNegativeRankingLoss(nn.Module):
     Args:
         scale: output of similarity function is multiplied by this value => I don't know why this is needed
         similarity_fct: standard of distance metrics, default cosine similarity
-
-    Example:
-        model = SentenceTransformer('distil-bert-base-uncased')
-        model = SentenceTransformer('distil-bert-base-uncased')
-        train_examples = [InputExample(texts=['Anchor 1', 'Positive 1']),
-        InputExample(texts=['Anchor 2', 'Positive 2'])]
-        train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=32)
-        train_loss = losses.MultipleNegativesRankingLoss(model=model)
-
     Reference:
         https://arxiv.org/pdf/1705.00652.pdf
         https://www.sbert.net/docs/package_reference/losses.html

@@ -99,6 +99,7 @@ class SD2Trainer:
                 image_features = model(clip_images, 'vision', style_features=style_features)
                 text_features = model(labels, 'text')
 
+                # keepdim: keep the batch dimension, math.sqrt(384)에 대한 연구 필요, 저게 어떻게 가우시안과 최대한 비슷해 지는지
                 image_features = image_features / image_features.norm(dim=-1, keepdim=True) * math.sqrt(384)
                 text_features = text_features / text_features.norm(dim=-1, keepdim=True) * math.sqrt(384)
 
