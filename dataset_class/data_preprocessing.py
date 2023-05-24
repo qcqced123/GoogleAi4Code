@@ -49,8 +49,11 @@ def markdown_to_text(markdown_string: str) -> str:
     md -> html -> string
     Args:
         markdown_string: str, markdown string
+    Example:
+        markdown_to_text(md.loc['63a93277', 'source'])
+        => md == pd.DataFrame filtered by cell_type == 'markdown'
     Reference:
-    https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
+        https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
     """
     html = markdown.markdown(markdown_string)
     html = re.sub(r'<pre>(.*?)</pre>', ' ', html)  # remove code snippets
@@ -60,9 +63,27 @@ def markdown_to_text(markdown_string: str) -> str:
     return text
 
 
-def code_tokenizer(code: str) -> list[str]:
-    pass
-
+def code_tokenizer(code: str) -> str:
+    """
+    Tokenize code text by python built-in tokenizer for code scanning
+    Args:
+        code: str, code text
+    Example:
+        code = code.loc['3a6623e3','source']
+        code_text = tokenize.generate_tokens(io.StringIO(code).readline)
+        ' '.join([tok.string for tok in code_text if tok.type==1 or tok.type==2 or tok.type==3 or tok.type==60])
+    Reference:
+        https://docs.python.org/3/library/tokenize.html
+        https://www.kaggle.com/code/haithamaliryan/ai4code-extract-all-functions-variables-names/notebook
+    """
+    try:
+        code_text = tokenize.generate_tokens(io.StringIO(code).readline)
+        code_str = ' '.join([tok.string for tok in code_text if tok.type == 1 or tok.type == 2 or tok.type == 3 or tok.type == 60])
+        if len(code_str) == 0:
+            code_str = "unknown"
+    except:
+        code_str = code
+    return code_str
 
 def kfold(df: pd.DataFrame, cfg: configuration.CFG) -> pd.DataFrame:
     """ KFold """
