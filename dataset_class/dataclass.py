@@ -24,7 +24,7 @@ class GoogleAiDataset(Dataset):
         """
         1) make Embedding Shape,
             - Data: [CLS]+[MD]+[markdown text]+[MD]+[markdown text]+[MD]+[SEP]+[CD]+[code text]+[CD]+[SEP]
-            - Label: [-1] * self.cfg.max_len, target value의 인덱스 위치에 score_class값 전달
+            - Label: just forward pass rank value?
         2) apply data augment
             - shuffle both of them, markdown text & code text
         """
@@ -33,7 +33,7 @@ class GoogleAiDataset(Dataset):
         self.cell_type = self.df.iloc[item, 2]
         self.text = self.df.iloc[item, 3]
         self.ancestor_id = self.df.iloc[item, 5]
-        self.pct_rank =
+
 
 
 class UPPPMDataset(Dataset):

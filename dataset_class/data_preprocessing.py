@@ -107,9 +107,9 @@ def code_tokenizer(code: str) -> str:
 def sequence_length(cfg: configuration.CFG, text_list: list) -> list:
     """ Get sequence length of all text data for checking statistics value """
     length_list = []
-    for text in text_list:
+    for text in tqdm(text_list):
         tmp_text = tokenizing(cfg, text)['attention_mask']
-        length_list.append(tmp_text.count(1))
+        length_list.append(tmp_text[tmp_text == 1].shape[0])
     return length_list
 
 
