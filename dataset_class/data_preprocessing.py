@@ -12,13 +12,19 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 from tqdm.auto import tqdm
 
 
-def add_special_token(cfg: configuration.CFG) -> None:
-    """ Add [TAR] Token to pretrained tokenizer """
-    tar_token = '[TAR]'
-    special_tokens_dict = {'additional_special_tokens': [f'{tar_token}']}
+def add_special_token(cfg: configuration.CFG, token: str) -> None:
+    """
+    Add special token to pretrained tokenizer
+    Args:
+        cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
+        token: str, special token to add
+    """
+    special_token = token
+    special_tokens_dict = {'additional_special_tokens': [f'{special_token}']}
     cfg.tokenizer.add_special_tokens(special_tokens_dict)
-    tar_token_id = cfg.tokenizer(f'{tar_token}', add_special_tokens=False)['input_ids'][0]
-    setattr(cfg.tokenizer, 'tar_token', f'{tar_token}')
+    tar_token_id = cfg.tokenizer(f'{special_token}', add_special_tokens=False)['input_ids'][0]
+
+    setattr(cfg.tokenizer, 'tar_token', f'{special_token}')
     setattr(cfg.tokenizer, 'tar_token_id', tar_token_id)
     cfg.tokenizer.save_pretrained(f'{cfg.checkpoint_dir}/tokenizer/')
 
@@ -55,11 +61,23 @@ def markdown_to_text(markdown_string: str) -> str:
     Reference:
         https://gist.github.com/lorey/eb15a7f3338f959a78cc3661fbc255fe
     """
-    html = markdown.markdown(markdown_string)
-    html = re.sub(r'<pre>(.*?)</pre>', ' ', html)  # remove code snippets
-    html = re.sub(r'<code>(.*?)</code >', ' ', html)  # remove code snippets
-    soup = BeautifulSoup(html, "html.parser")  # extract text
-    text = ''.join(soup.findAll(text=True))  # extract text
+    try:
+        html = markdown.markdown(markdown_string)
+        html = re.sub(r'<pre>(.*?)</pre>', ' ', html)  # remove code snippets
+        html = re.sub(r'<code>(.*?)</code >', ' ', html)  # remove code snippets
+        soup = BeautifulSoup(html, "html.parser")  # extract text
+        text = ''.join(soup.findAll(text=True)).strip()  # extract text
+        if len(text) == 0:
+            text = markdown_string
+            if text[0] == "!" and text[1] == "[":
+                for m in range(2, len(text)):
+                    if text[m] == "]":
+                        text = 'embedded ' + text[2:m] + ' image'
+                        break
+            elif '<img src' in markdown_string or '.png' in markdown_string or 'gif' in markdown_string or '.jpg' in markdown_string:
+                text = 'embedded image'
+    except:
+        text = markdown_string
     return text
 
 
@@ -84,6 +102,21 @@ def code_tokenizer(code: str) -> str:
     except:
         code_str = code
     return code_str
+
+
+def sequence_length(cfg: configuration.CFG, text_list: list) -> list:
+    """ Get sequence length of all text data for checking statistics value """
+    length_list = []
+    for text in text_list:
+        tmp_text = tokenizing(cfg, text)['attention_mask']
+        length_list.append(tmp_text.count(1))
+    return length_list
+
+
+def check_null(df: pd.DataFrame) -> pd.Series:
+    """ check if input dataframe has null type object...etc """
+    return df.isnull().sum()
+
 
 def kfold(df: pd.DataFrame, cfg: configuration.CFG) -> pd.DataFrame:
     """ KFold """

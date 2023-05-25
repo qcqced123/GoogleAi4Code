@@ -1,9 +1,7 @@
 import gc, random, ast
 import numpy as np
 import pandas as pd
-import rasterio
 import torch
-from rasterio.enums import Resampling
 from torch.utils.data import Dataset
 from torch import Tensor
 
@@ -17,20 +15,25 @@ class GoogleAiDataset(Dataset):
         self.cfg = cfg
         self.df = df
         self.tokenizer = tokenizing
-        self.special_token = add_special_token
+        self.special_token = add_special_token  # function that add special token to tokenizer
 
     def __len__(self) -> int:
         return len(self.df)
 
-    def __getitem__(self, item: int) -> tuple[Tensor, Tensor, Tensor]:
+    def __getitem__(self, item: int):
+        """
+        1) make Embedding Shape,
+            - Data: [CLS]+[MD]+[markdown text]+[MD]+[markdown text]+[MD]+[SEP]+[CD]+[code text]+[CD]+[SEP]
+            - Label: [-1] * self.cfg.max_len, target value의 인덱스 위치에 score_class값 전달
+        2) apply data augment
+            - shuffle both of them, markdown text & code text
+        """
         self.nb_id = self.df.iloc[item, 0]
         self.cell_id = self.df.iloc[item, 1]
         self.cell_type = self.df.iloc[item, 2]
         self.text = self.df.iloc[item, 3]
         self.ancestor_id = self.df.iloc[item, 5]
         self.pct_rank =
-
-
 
 
 class UPPPMDataset(Dataset):
@@ -40,8 +43,8 @@ class UPPPMDataset(Dataset):
         self.anchor_list = df.anchor.to_numpy()
         self.target_list = df.targets.to_numpy()
         self.context_list = df.context_text.to_numpy()
-        self.score_list = df.scores.to_numpy()
-        self.id_list = df.ids.to_numpy()
+        self.score_list = df.scores.to_numpy()        self.id_list = df.ids.to_numpy()
+
         self.cfg = cfg
         self.is_valid = is_valid
 
