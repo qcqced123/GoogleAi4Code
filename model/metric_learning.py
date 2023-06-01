@@ -78,6 +78,11 @@ class CLIPMultipleNegativeRankingLoss(nn.Module):
     """
     Multiple Negative Ranking Loss for CLIP Model
     main concept is same as original one, but append suitable for other type of model (Not Sentence-Transformers)
+
+    In Sentence-Transformer, they use calculate similarity used completely same embedding list
+    But in multi-modal task such as CLIP, they use different embedding list (image & text)
+    So we append similarity calculation part which is calculating same idx element in different embedding list
+
     if you set more batch size, you can get more negative pairs for each anchor & positive pair
     Args:
         scale: output of similarity function is multiplied by this value => I don't know why this is needed
@@ -99,7 +104,7 @@ class CLIPMultipleNegativeRankingLoss(nn.Module):
         self.reduction = reduction
         self.cross_entropy_loss = CrossEntropyLoss(self.reduction)
 
-    def forward(self, embeddings_a, embeddings_b):
+    def forward(self, embeddings_a: torch.Tensor, embeddings_b: torch.Tensor):
         """
         Compute similarity between `a` and `b`.
         Labels have the index of the row number at each row, same index means that they are ground truth
@@ -120,9 +125,12 @@ class CLIPMultipleNegativeRankingLoss(nn.Module):
 # Multiple Negative Ranking Loss, source code from UKPLab
 class MultipleNegativeRankingLoss(nn.Module):
     """
-    Multiple Negative Ranking Loss (MNRL)
+    Multiple Negative Ranking Loss (MNRL) for Dictionary Wise Pipeline, This class has one change point
     main concept is same as contrastive loss, but it can be useful when label data have only positive value
     if you set more batch size, you can get more negative pairs for each anchor & positive pair
+    Change Point:
+        In original code & paper, they set label from range(len()), This mean that not needed to use label feature
+        But in our case, we need to use label feature, so we change label from range(len()) to give label feature
     Args:
         scale: output of similarity function is multiplied by this value
         similarity_fct: standard of distance metrics, default cosine similarity
@@ -142,27 +150,25 @@ class MultipleNegativeRankingLoss(nn.Module):
         https://github.com/KevinMusgrave/pytorch-metric-learning
         https://www.youtube.com/watch?v=b_2v9Hpfnbw&ab_channel=NicholasBroad
     """
-    def __init__(self, model: sentence_transformers, scale: float = 20.0, similarity_fct=cos_sim) -> None:
+
+    def __init__(self, reduction: str, scale: float = 20.0, similarity_fct=cos_sim) -> None:
         super().__init__()
-        self.model = model
+        self.reduction = reduction
         self.scale = scale
-        self.distance_metric = similarity_fct
-        self.cross_entropy_loss = CrossEntropyLoss('mean')  # default setting: mean
+        self.similarity_fct = similarity_fct
+        self.reduction = reduction
+        self.cross_entropy_loss = CrossEntropyLoss(self.reduction)
 
-    def forward(self, sentence_features: Iterable[Dict[str, Tensor]]) -> Tensor:
+    def forward(self, embeddings_a: Tensor, embeddings_b: Tensor, labels: Tensor) -> Tensor:
         """
-        need to append reps for CLIP Pipeline, not sentence-transformers
-        In original code, embedding_b for concatenating reps start at index 1, but in this code, it start at index 0
-        Because in starting from 1, it doesn't calculate cosine similarity between anchor and positive pair
+        This Multiple Negative Ranking Loss (MNRL) is used for same embedding list,
+        Args:
+            embeddings_a: embeddings of shape for mini-batch
+            embeddings_b: same as embedding_a, but start at index 1
+            labels: labels of mini-batch instance from competition dataset (rank), must be on same device with embedding
         """
-        reps = [self.model(sentence_feature)['sentence_embedding'] for sentence_feature in sentence_features]
-        embedding_a = reps[0]  # Embedding which is stacking N sentence(text, paragraph, document, etc.)
-        embedding_b = torch.cat(reps[0:])  # Embedding which is stacking N sentence(text, paragraph, document, etc.)
-
-        scores = self.similarity_fct(embedding_a, embedding_b) * self.scale
-        labels = torch.tensor(range(len(scores)), dtype=torch.long)
-        return self.cross_entropy_loss(scores, labels)
-
+        similarity_scores = self.similarity_fct(embeddings_a, embeddings_b) * self.scale
+        return self.cross_entropy_loss(similarity_scores, labels)
 
 # Arcface + CrossEntropy
 class ArcMarginProduct(nn.Module):

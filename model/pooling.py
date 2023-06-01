@@ -89,10 +89,10 @@ class ConvGEMPooling(nn.Module):
 
 
 # Mean Pooling
-class CLIPGEMPooling(nn.Module):
+class SubSequenceGEMPooling(nn.Module):
     """
     Generalized Mean Pooling for Natural Language Processing
-    This class version of GEMPooling for CLIP, Transfer from NLP Task Code
+    This class version of GEMPooling for NLP, Transfer from Computer Vision Task Code
 
     Mean Pooling <= GEMPooling <= Max Pooling
     Because of doing exponent to each token embeddings, GEMPooling is like as weight to more activation token
@@ -100,16 +100,19 @@ class CLIPGEMPooling(nn.Module):
     In original paper, they use p=3, but in this class, we use p=4 because torch doesn't support pow calculation
     for negative value tensor, only for non-negative value in odd number exponent
 
-    [Reference]
-    https://paperswithcode.com/method/generalized-mean-pooling
+    In this Competition, Code Cell & Markdown Cell's token statistic distribution is fine different
+    GEMPooling can detect mean embedding with unique embedding like as max pooling
+    This can be helpful for dividing code cell and markdown cell
+    Reference:
+        https://paperswithcode.com/method/generalized-mean-pooling
     """
     def __init__(self, auto_cfg) -> None:
-        super(CLIPGEMPooling, self).__init__()
+        super(SubSequenceGEMPooling, self).__init__()
         self.eps = 1e-6
 
     def forward(self, last_hidden_state, p: int = 4) -> Tensor:
         """
-        last_hidden_state.size: [batch_size, patches_sequence, hidden_size]
+        last_hidden_state.size: [1, cell_sequence, hidden_size]
         1) Pow last_hidden_state with p and then take a averaging
         2) pow sum_embeddings with 1/p
         """
@@ -129,8 +132,12 @@ class GEMPooling(nn.Module):
 
     In original paper, they use p=3, but in this class, we use p=4 because torch doesn't support pow calculation
     for negative value tensor, only for non-negative value in odd number exponent
-    [Reference]
-    https://paperswithcode.com/method/generalized-mean-pooling
+
+    In this Competition, Code Cell & Markdown Cell's token statistic distribution is fine different
+    GEMPooling can detect mean embedding with unique embedding like as max pooling
+    This can be helpful for dividing code cell and markdown cell
+    Reference:
+        https://paperswithcode.com/method/generalized-mean-pooling
     """
     def __init__(self, auto_cfg) -> None:
         super(GEMPooling, self).__init__()

@@ -12,6 +12,9 @@ from nltk.stem import WordNetLemmatizer, PorterStemmer
 from tqdm.auto import tqdm
 
 
+stemmer = WordNetLemmatizer()
+
+
 def add_special_token(cfg: configuration.CFG, token: str) -> None:
     """
     Add special token to pretrained tokenizer
@@ -29,9 +32,41 @@ def add_special_token(cfg: configuration.CFG, token: str) -> None:
     cfg.tokenizer.save_pretrained(f'{cfg.checkpoint_dir}/tokenizer/')
 
 
+def add_markdown_token(cfg: configuration.CFG) -> None:
+    """
+    Add MarkDown token to pretrained tokenizer ('[MD]')
+    Args:
+        cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
+    """
+    markdown_token = '[MD]'
+    special_tokens_dict = {'additional_special_tokens': [f'{markdown_token}']}
+    cfg.tokenizer.add_special_tokens(special_tokens_dict)
+    markdown_token_id = cfg.tokenizer(f'{markdown_token}', add_special_tokens=False)['input_ids'][0]
+
+    setattr(cfg.tokenizer, 'markdown_token', f'{markdown_token}')
+    setattr(cfg.tokenizer, 'markdown_token_id', markdown_token_id)
+    cfg.tokenizer.save_pretrained(f'{cfg.checkpoint_dir}/tokenizer/')
+
+
+def add_code_token(cfg: configuration.CFG) -> None:
+    """
+    Add Code token to pretrained tokenizer ('[CD]')
+    Args:
+        cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
+    """
+    code_token = '[CD]'
+    special_tokens_dict = {'additional_special_tokens': [f'{code_token}']}
+    cfg.tokenizer.add_special_tokens(special_tokens_dict)
+    code_token_id = cfg.tokenizer(f'{code_token}', add_special_tokens=False)['input_ids'][0]
+
+    setattr(cfg.tokenizer, 'code_token', f'{code_token}')
+    setattr(cfg.tokenizer, 'code_token_id', code_token_id)
+    cfg.tokenizer.save_pretrained(f'{cfg.checkpoint_dir}/tokenizer/')
+
+
 def tokenizing(cfg: configuration.CFG, text: str) -> any:
     """
-    Preprocess text for CLIP
+    Preprocess text for LLM Input
     Args:
         cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
         text: text from dataframe or any other dataset, please pass str type
@@ -42,11 +77,71 @@ def tokenizing(cfg: configuration.CFG, text: str) -> any:
         padding='max_length',
         truncation=True,
         return_tensors=None,
-        add_special_tokens=True,
+        add_special_tokens=False,  # later, we will add ourselves
     )
     for k, v in inputs.items():
         inputs[k] = torch.as_tensor(v)
     return inputs
+
+
+def adjust_sequences(sequences: list, max_len: int = 2048):
+    """
+    similar to dynamic padding concept
+    Args:
+        sequences: list of each cell's token sequence in one unique notebook id, must pass tokenized sequence input_ids
+        => sequences = [[1,2,3,4,5,6], [1,2,3,4,5,6], ... , [1,2,3,4,5]]
+        max_len: max length of sequence into LLM Embedding Layer, default is 2048 for DeBERTa-V3-Large
+    Reference:
+         https://github.com/louis-she/ai4code/blob/master/ai4code/utils.py#L70
+    """
+    length_of_seqs = [len(seq) for seq in sequences]
+    total_len = sum(length_of_seqs)
+    cut_off = total_len - max_len
+    if cut_off <= 0:
+        return sequences, length_of_seqs
+
+    for _ in range(cut_off):
+        max_index = length_of_seqs.index(max(length_of_seqs))
+        length_of_seqs[max_index] -= 1
+    sequences = [sequences[i][:l] for i, l in enumerate(length_of_seqs)]
+
+    return sequences, length_of_seqs
+
+
+def subsequent_tokenizing(cfg: configuration.CFG, text: str) -> any:
+    """
+    Tokenize input sentence to longer sequence than common tokenizing
+    Append padding strategy NOT Apply same max length, similar concept to dynamic padding
+    Truncate longer sequence to match LLM max sequence
+    Args:
+        cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
+        text: text from dataframe or any other dataset, please pass str type
+    Reference:
+        https://www.kaggle.com/competitions/AI4Code/discussion/343714
+        https://github.com/louis-she/ai4code/blob/master/tests/test_utils.py#L6
+
+    """
+    inputs = cfg.tokenizer.encode_plus(
+        text,
+        max_length=128,
+        padding=False,
+        truncation=True,
+        return_tensors=None,
+        add_special_tokens=False,  # No need to special token to subsequent text sequence
+    )
+    return inputs['input_ids']
+
+
+def subsequent_decode(cfg: configuration.CFG, token_list: list) -> any:
+    """
+    Return decoded text from subsequent_tokenizing & adjust_sequences
+    For making prompt text
+    Args:
+        cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
+        token_list: token list from subsequent_tokenizing & adjust_sequences
+    """
+    output = cfg.tokenizer.decode(token_list)
+    return output
 
 
 def markdown_to_text(markdown_string: str) -> str:
@@ -102,6 +197,45 @@ def code_tokenizer(code: str) -> str:
     except:
         code_str = code
     return code_str
+
+
+def links_to_word(text):
+    return re.sub("https?:\/\/[^\s]+", " link ", text)
+
+
+def no_char(text):
+    text = re.sub(r"\s+[a-zA-Z]\s+", " ", text)
+    text = re.sub(r"\^[a-zA-Z]\s+", " ", text)
+    text = re.sub(r"\s+[a-zA-Z]$", " ", text)
+    return text
+
+
+def no_html_tags(text):
+    return re.sub("<.*?>", " ", text)
+
+
+def no_multi_spaces(text):
+    return re.sub(r"\s+", " ", text, flags=re.I)
+
+
+def lemmatize(text):
+    tokens = text.split()
+    tokens = [stemmer.lemmatize(word) for word in tokens]
+    return " ".join(tokens)
+
+
+def underscore_to_space(text: str):
+    text = text.replace("_", " ")
+    text = text.replace("-", " ")
+    return text
+
+
+def preprocess_text(source):
+    # Remove all the special characters
+    source = re.sub(r'\W', ' ', str(source))
+    source = re.sub(r'^b\s+', '', source)
+    source = source.lower()
+    return source
 
 
 def sequence_length(cfg: configuration.CFG, text_list: list) -> list:

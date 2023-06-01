@@ -4,6 +4,9 @@ from omegaconf import OmegaConf
 from configuration import CFG
 from utils.helper import check_library, all_type_seed
 from utils import sync_config
+from dataset_class.data_preprocessing import add_markdown_token, add_code_token
+
+
 os.environ['TOKENIZERS_PARALLELISM'] = "false"
 os.environ['LRU_CACHE_CAPACITY'] = "1"
 check_library(True)
@@ -12,6 +15,7 @@ all_type_seed(CFG, True)
 
 def main(config_path: str, cfg) -> None:
     sync_config(OmegaConf.load(config_path))
+    add_markdown_token(cfg), add_code_token(cfg)
     getattr(train_loop, cfg.loop)(cfg)
 
 

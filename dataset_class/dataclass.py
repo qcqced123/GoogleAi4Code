@@ -1,4 +1,4 @@
-import gc, random, ast
+import random, ast
 import numpy as np
 import pandas as pd
 import torch
@@ -6,109 +6,110 @@ from torch.utils.data import Dataset
 from torch import Tensor
 
 import configuration
-from dataset_class.data_preprocessing import add_special_token, tokenizing
+from dataset_class.data_preprocessing import tokenizing, subsequent_tokenizing, adjust_sequences, subsequent_decode
 
 
 class GoogleAiDataset(Dataset):
     """ Dataset class For Token Classification Pipeline """
-    def __init__(self, cfg: configuration.CFG, df: pd.DataFrame) -> None:
+    def __init__(self, cfg: configuration.CFG, df: pd.DataFrame, is_valid=False) -> None:
         self.cfg = cfg
-        self.df = df
+        self.id_list = df.id.to_numpy()
+        self.cell_id_list = df.cell_id.to_numpy()
+        self.cell_type_list = df.cell_type.to_numpy()
+        self.rank_list = df['rank'].to_numpy()
+        self.source_list = df.source.to_numpy()
         self.tokenizer = tokenizing
-        self.special_token = add_special_token  # function that add special token to tokenizer
-
-    def __len__(self) -> int:
-        return len(self.df)
-
-    def __getitem__(self, item: int):
-        """
-        1) make Embedding Shape,
-            - Data: [CLS]+[MD]+[markdown text]+[MD]+[markdown text]+[MD]+[SEP]+[CD]+[code text]+[CD]+[SEP]
-            - Label: just forward pass rank value?
-        2) apply data augment
-            - shuffle both of them, markdown text & code text
-        """
-        self.nb_id = self.df.iloc[item, 0]
-        self.cell_id = self.df.iloc[item, 1]
-        self.cell_type = self.df.iloc[item, 2]
-        self.text = self.df.iloc[item, 3]
-        self.ancestor_id = self.df.iloc[item, 5]
-
-
-
-class UPPPMDataset(Dataset):
-    """ For Token Classification Task class """
-    def __init__(self, cfg, df, is_valid=False):
-        super().__init__()
-        self.anchor_list = df.anchor.to_numpy()
-        self.target_list = df.targets.to_numpy()
-        self.context_list = df.context_text.to_numpy()
-        self.score_list = df.scores.to_numpy()        self.id_list = df.ids.to_numpy()
-
-        self.cfg = cfg
+        self.subsequent_tokenizing = subsequent_tokenizing
+        self.subsequent_decode = subsequent_decode
         self.is_valid = is_valid
-
-    def tokenizing(self, text: str) -> dict:
-        inputs = self.cfg.tokenizer.encode_plus(
-            text,
-            max_length=self.cfg.max_len,
-            padding='max_length',
-            truncation=True,
-            return_tensors=None,
-            add_special_tokens=False,
-        )
-        return inputs
 
     def __len__(self) -> int:
         return len(self.id_list)
 
-    def __getitem__(self, idx: int):
+    def __getitem__(self, item: int) -> tuple[Tensor, Tensor, Tensor]:
         """
-        1) make Embedding Shape,
-            - Data: [cls]+[anchor]+[sep]+[target]+[tar]+[target]+[tar]...+[tar]+[cpc_text]+[sep]
-            - Label: [-1] * self.cfg.max_len, target value의 인덱스 위치에 score_class값 전달
-        2) apply data augment
-            - shuffle target values
+        1) Apply data augment
+            - shuffle both of them, markdown text & code text
+        2) Apply dynamic padding
+        3) Make Embedding Shape:
+            - Data: [CLS]+[MD]+[markdown text]+[MD]+[markdown text]+[MD]+[SEP]+[CD]+[code text]+[CD]+[SEP]
+            - Label: just forward pass rank value?
+        4) Make each unique cell's position list (all_position):
+            for calculating subsequence of prompt's embedding, ex) markdown source text1 => 0.xxx
         """
-        scores = np.array(ast.literal_eval(self.score_list[idx]))  # len(scores) == target count
-        targets = np.array(ast.literal_eval(self.target_list[idx]))
+        cell_ids = np.array(ast.literal_eval(self.cell_id_list[item]))
+        cell_types = np.array(ast.literal_eval(self.cell_type_list[item]))
+        ranks = np.array(ast.literal_eval(self.rank_list[item]))
+        sources = np.array(ast.literal_eval(self.source_list[item]))  # need to apply encode & decode
 
-        # Data Augment for train stage: shuffle target value's position index
+        # 1) Augment Data for train stage: shuffle target value's position index
         if not self.is_valid:
-            indices = list(range(len(scores)))
+            indices = list(range(len(ranks)))
             random.shuffle(indices)
-            scores = scores[indices]
-            targets = targets[indices]
+            cell_ids = cell_ids[indices]
+            cell_types = cell_types[indices]
+            ranks = ranks[indices]
+            sources = sources[indices]  # [source6, source1, .... , source88]
 
-        text = self.cfg.tokenizer.cls_token + self.anchor_list[idx] + self.cfg.tokenizer.sep_token
-        for target in targets:
-            text += target + self.cfg.tokenizer.tar_token
-        text += self.context_list[idx] + self.cfg.tokenizer.sep_token
+        # 2) Apply Dynamic Padding
+        tmp_token_list = []
+        for idx in range(len(ranks)):
+            tmp_token_list.append(subsequent_tokenizing(self.cfg, sources[idx]))
+        adjust_inputs, _ = adjust_sequences(tmp_token_list, self.cfg.max_len)
+        for idx in range(len(adjust_inputs)):
+            sources[idx] = self.subsequent_decode(self.cfg, adjust_inputs[idx])  # decode to prompt text & convert
 
-        # tokenizing & make label list
-        inputs = self.tokenizing(text)
-        #target_mask = np.zeros(self.cfg.max_len)
-        target_mask = np.zeros(len([token for token in inputs['input_ids'] if token != 0]))
-        label = torch.full(
-            [len([token for token in inputs['input_ids'] if token != 0])], -1, dtype=torch.float
-        )
-        # label = torch.full([self.cfg.max_len], -1, dtype=torch.float)
-        cnt_tar, cnt_sep, nth_target, prev_i = 0, 0, -1, -1
-        for i, input_id in enumerate(inputs['input_ids']):
-            if input_id == self.cfg.tokenizer.tar_token_id:
-                cnt_tar += 1
-                if cnt_tar == len(targets):
-                    break
-            if input_id == self.cfg.tokenizer.sep_token_id:
-                cnt_sep += 1
-            if cnt_sep == 1 and input_id not in [self.cfg.tokenizer.pad_token_id, self.cfg.tokenizer.sep_token_id,
-                                                 self.cfg.tokenizer.tar_token_id]:
-                if (i - prev_i) > 1:
-                    nth_target += 1
-                label[i] = scores[nth_target]
-                target_mask[i] = 1
-                prev_i = i
+        # 3) Make prompt for model
+        md_prompt = self.cfg.tokenizer.cls_token + self.cfg.tokenizer.markdown_token
+        cd_prompt = self.cfg.tokenizer.sep_token + self.cfg.tokenizer.code_token
+        md_rank, cd_rank = [], []
+        for idx in range(len(ranks)):
+            if cell_types[idx] == 'markdown':
+                md_prompt += sources[idx] + self.cfg.tokenizer.markdown_token
+                md_rank.append(ranks[idx])
+            else:
+                cd_prompt += sources[idx] + self.cfg.tokenizer.code_token
+                cd_rank.append(ranks[idx])
 
-        for k, v in inputs.items():
-            inputs[k] = torch.tensor(v, dtype=torch.long)
-        return inputs, target_mask, label
+        prompt = md_prompt + cd_prompt + self.cfg.tokenizer.sep_token
+        prompt = self.tokenizer(self.cfg, prompt)  # need to update with dynamic padding, and then make target mask
+        ranks = torch.tensor(md_rank + cd_rank)
+
+        # 4) Make each unique cell's position list (all_position)
+        md_position, cd_position = [], []
+        md_count, cd_count, sep_count, src, end = 0, 0, 0, 0, 0
+        for idx, input_id in enumerate(prompt['input_ids']):
+            # make markdown token position list
+            if idx == 1:
+                md_count += 1
+                src = idx + 1
+                continue
+            if input_id == self.cfg.tokenizer.markdown_token_id and prompt['input_ids'][idx+1] != self.cfg.tokenizer.sep_token_id:
+                end = idx - 1
+                md_position.append([src, end])
+                src = idx + 1
+                continue
+            elif input_id == self.cfg.tokenizer.markdown_token_id and prompt['input_ids'][idx+1] == self.cfg.tokenizer.sep_token_id:
+                end = idx - 1
+                md_position.append([src, end])
+                sep_count += 1
+                continue
+            # make code token position list
+            if input_id == self.cfg.tokenizer.code_token_id and cd_count == 0:
+                cd_count += 1
+                src = idx + 1
+                continue
+            elif input_id == self.cfg.tokenizer.code_token_id and prompt['input_ids'][idx+1] != self.cfg.tokenizer.sep_token_id:
+                end = idx - 1
+                cd_position.append([src, end])
+                src = idx + 1
+                continue
+            elif input_id == self.cfg.tokenizer.code_token_id and prompt['input_ids'][idx+1] == self.cfg.tokenizer.sep_token_id:
+                end = idx - 1
+                cd_position.append([src, end])
+                break
+
+        md_position = torch.as_tensor(md_position)  # for validation stage
+        cd_position = torch.as_tensor(cd_position)
+        all_position = md_position + cd_position
+        return prompt, ranks, all_position

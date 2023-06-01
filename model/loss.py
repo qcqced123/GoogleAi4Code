@@ -126,7 +126,7 @@ class BinaryCrossEntropyLoss(nn.Module):
 
 class FocalLoss(nn.Module):
     """
-    FocalLoss
+    This is a implementation of Focal Loss with smooth label cross entropy supported which is proposed in
     """
     def __init__(self, gamma=0, alpha=None, size_average=True):
         super(FocalLoss, self).__init__()
@@ -160,3 +160,5 @@ class FocalLoss(nn.Module):
             return loss.mean()
         else:
             return loss.sum()
+
+

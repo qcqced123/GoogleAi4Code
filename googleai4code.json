@@ -6,20 +6,17 @@
         "load_pretrained": false,
         "resume": false,
         "state_dict": "",
-        "name": "SD2Trainer",
+        "name": "DictWiseTrainer",
         "loop": "train_loop",
-        "dataset": "SD2Dataset",
-        "model_arch": "SD2Model",
-        "style_model_arch": "StyleExtractModel",
-        "model": "openai/clip-vit-large-patch14",
-        "style_model": "convnext_base_384_in22ft1k",
-        "image_pooling": "CLIPGEMPooling",
-        "text_pooling": "GEMPooling"
+        "dataset": "GoogleAiDataset",
+        "model_arch": "GoogleAi4CodeModel",
+        "model": "microsoft/deberta-v3-large",
+        "pooling": "SubSequenceGEMPooling"
     },
     "common_settings": {
         "wandb": true,
         "optuna": false,
-        "competition": "SD2",
+        "competition": "GoogleAi4Code",
         "seed": 42,
         "n_gpu": 1,
         "gpu_id": 0,
@@ -27,10 +24,10 @@
     },
     "data_settings": {
         "n_folds": 5,
-        "max_len": 77,
+        "max_len": 2048,
         "epochs": 5,
-        "batch_size": 128,
-        "val_batch_size": 64
+        "batch_size": 8,
+        "val_batch_size": 8
     },
     "gradient_settings": {
         "amp_scaler": true,
@@ -40,11 +37,11 @@
         "max_grad_norm": 1000
     },
     "loss_options": {
-        "loss_fn": "CLIPMultipleNegativeRankingLoss",
+        "loss_fn": "MultipleNegativeRankingLoss",
         "reduction": "mean"
     },
     "metrics_options": {
-        "metrics": "CosineSimilarity"
+        "metrics": "KendallTau"
     },
     "optimizer_options": {
         "optimizer": "AdamW",
@@ -63,19 +60,17 @@
         "warmup_ratio": 0.1
     },
     "swa_options": {
-        "swa": true,
-        "swa_lr": 1e-6,
+        "swa": false,
+        "swa_lr": 5e-6,
         "anneal_epochs": 1,
         "anneal_strategy": "cos"
     },
     "model_utils": {
         "stop_mode": "max",
         "freeze": true,
-        "vision_num_freeze": 16,
-        "text_num_freeze": 8,
+        "num_freeze": 12,
         "reinit": true,
-        "vision_num_reinit": 2,
-        "text_num_reinit": 1,
+        "num_reinit": 4,
         "awp": false,
         "nth_awp_start_epoch": 2,
         "awp_eps": 1e-2,

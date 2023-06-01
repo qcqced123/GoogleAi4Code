@@ -128,12 +128,23 @@ class CosineSimilarity(nn.Module):
 
 
 class KendallTau(nn.Module):
-    """ Kendall Tau Score class"""
+    """
+    Variation Version of Kendall Tau Score class for Kaggle Competition <GoogleAi4Code>
+    This class calculate instance-level metric, not mini-batch level
+    Reference:
+        https://www.kaggle.com/code/ryanholbrook/competition-metric-kendall-tau-correlation/notebook
+    """
     def __init__(self):
         super(KendallTau, self).__init__()
 
     @staticmethod
     def count_inversions(predicted_rank: list) -> float:
+        """
+        number of pairs (i,j) which is needed to swap for correct order,
+        such that i < j but predicted_rank[i] > predicted_rank[j]
+        Args:
+            predicted_rank: list of predicted rank from model
+        """
         inversions = 0
         sorted_so_far = []
         for i, u in enumerate(predicted_rank):
@@ -142,7 +153,16 @@ class KendallTau(nn.Module):
             sorted_so_far.insert(j, u)
         return inversions
 
-    def forward(self, ground_truth: list, predictions: list) -> float:
+    def forward(self, predictions: list, ground_truth: list) -> float:
+        """
+        n is the number of cell in one unique notebook id,
+        total_2max is worst case of inversions, when all cells are in reverse order So all of them need to swap
+        Thus, this metric means that efficient & accuracy of predicted order from model
+        T = 1 - 4 * number of predicted_order's swap / number of worst_case's swap
+        Args:
+            ground_truth: list of ground truth, labels
+            predictions: list of predictions from model
+        """
         total_inversions = 0
         total_2max = 0  # twice the maximum possible inversions across all instances
         for gt, pred in zip(ground_truth, predictions):
