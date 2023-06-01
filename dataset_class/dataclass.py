@@ -111,5 +111,5 @@ class GoogleAiDataset(Dataset):
 
         md_position = torch.as_tensor(md_position)  # for validation stage
         cd_position = torch.as_tensor(cd_position)
-        all_position = md_position + cd_position
+        all_position = torch.cat([md_position, cd_position], dim=0)
         return prompt, ranks, all_position

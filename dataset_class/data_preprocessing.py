@@ -71,7 +71,7 @@ def tokenizing(cfg: configuration.CFG, text: str) -> any:
         cfg: configuration.CFG, needed to load tokenizer from Huggingface AutoTokenizer
         text: text from dataframe or any other dataset, please pass str type
     """
-    inputs = cfg.tokenizer(
+    inputs = cfg.tokenizer.encode_plus(
         text,
         max_length=cfg.max_len,
         padding='max_length',

@@ -17,7 +17,7 @@ def train_loop(cfg: any) -> None:
             project=cfg.name,
             name=f'GoogleAi4Code{fold}/' + cfg.model,
             config=class2dict(cfg),
-            group=f'GoogleAi4Code_{cfg.image_pooling}/{cfg.model}',
+            group=f'GoogleAi4Code_{cfg.pooling}/{cfg.model}',
             job_type='train',
             entity="qcqced"
         )

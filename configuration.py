@@ -12,7 +12,7 @@ class CFG:
     loop = 'mpl_loop'
     dataset = 'FBPDataset'  # dataset_class.dataclass.py -> FBPDataset, MPLDataset
     model_arch = 'FBPModel'  # model.model.py -> FBPModel, MPLModel
-    model = 'openai/clip-vit-large-patch14'
+    model = 'microsoft/deberta-v3-large'
     tokenizer = AutoTokenizer.from_pretrained(model)
     pooling = 'MeanPooling'  # mean, attention, max, weightedlayer, concat, conv1d, lstm
 

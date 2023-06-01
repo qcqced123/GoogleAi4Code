@@ -49,6 +49,7 @@ class DictWiseTrainer:
             batch_size=self.cfg.batch_size,
             shuffle=True,
             worker_init_fn=seed_worker,
+            collate_fn=collate,
             generator=self.generator,
             num_workers=self.cfg.num_workers,
             pin_memory=True,
@@ -60,6 +61,7 @@ class DictWiseTrainer:
             batch_size=self.cfg.val_batch_size,
             shuffle=False,
             worker_init_fn=seed_worker,
+            collate_fn=collate,
             generator=self.generator,
             num_workers=self.cfg.num_workers,
             pin_memory=True,
@@ -77,8 +79,14 @@ class DictWiseTrainer:
 
         criterion = getattr(metric_learning, self.cfg.loss_fn)(self.cfg.reduction)
         val_metrics = getattr(model_metric, self.cfg.metrics)()
+        grouped_optimizer_params = get_optimizer_grouped_parameters(
+            model,
+            self.cfg.layerwise_lr,
+            self.cfg.layerwise_weight_decay,
+            self.cfg.layerwise_lr_decay
+        )
         optimizer = getattr(transformers, self.cfg.optimizer)(
-            params=model.parameters(),
+            params=grouped_optimizer_params,
             lr=self.cfg.layerwise_lr,
             eps=self.cfg.layerwise_adam_epsilon,
             correct_bias=not self.cfg.layerwise_use_bertadam
@@ -95,6 +103,7 @@ class DictWiseTrainer:
         model.train()
         for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_train)):  # Maybe need to append
             optimizer.zero_grad()
+            prompt = collate(prompt)
             for k, v in prompt.items():
                 prompt[k] = v.to(self.cfg.device)  # prompt to GPU
 
