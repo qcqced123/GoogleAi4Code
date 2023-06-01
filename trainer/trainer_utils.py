@@ -45,8 +45,20 @@ def get_optimizer_params(model, encoder_lr, decoder_lr, weight_decay):
     return optimizer_parameters
 
 
+class Collate:
+    """
+    Collate class for torch.utils.data.DataLoader
+    This class object to use variable data such as NLP text sequence
+    If you use static padding with AutoTokenizer, you don't need this class object
+    But if you use dynamic padding with AutoTokenizer, you must use this class object & call
+    """
+
+
 def collate(inputs):
-    """ Descending sort inputs by length of sequence """
+    """
+    Descending sort inputs by length of sequence
+    Sorting
+    """
     mask_len = int(inputs["attention_mask"].sum(axis=1).max())
     for k, v in inputs.items():
         inputs[k] = inputs[k][:, :mask_len]
