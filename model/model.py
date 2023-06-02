@@ -28,6 +28,7 @@ class GoogleAi4CodeModel(nn.Module):
             cfg.model,
             config=self.auto_cfg
         )
+        self.model.resize_token_embeddings(len(self.cfg.tokenizer))
         self.fc = nn.Linear(self.auto_cfg.hidden_size, 1)
         self.pooling = getattr(pooling, cfg.pooling)(self.auto_cfg)
         if self.cfg.load_pretrained:
