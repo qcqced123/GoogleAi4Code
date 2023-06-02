@@ -170,6 +170,7 @@ class MultipleNegativeRankingLoss(nn.Module):
         similarity_scores = self.similarity_fct(embeddings_a, embeddings_b) * self.scale
         return self.cross_entropy_loss(similarity_scores, labels)
 
+
 # Arcface + CrossEntropy
 class ArcMarginProduct(nn.Module):
     """

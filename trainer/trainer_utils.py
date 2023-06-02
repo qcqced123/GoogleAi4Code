@@ -2,6 +2,8 @@ import re
 import numpy as np
 import torch
 import transformers
+import more_itertools
+from torch.utils.data import Sampler
 from torch import Tensor
 from dataclasses import dataclass
 
@@ -33,6 +35,7 @@ def get_optimizer_grouped_parameters(model, layerwise_lr, layerwise_weight_decay
 
 
 def get_optimizer_params(model, encoder_lr, decoder_lr, weight_decay):
+    """ Layer-wise Learning Rate Decay """
     no_decay = ["bias", "LayerNorm.bias", "LayerNorm.weight"]
     optimizer_parameters = [
         {'params': [p for n, p in model.model.named_parameters() if not any(nd in n for nd in no_decay)],
@@ -43,6 +46,38 @@ def get_optimizer_params(model, encoder_lr, decoder_lr, weight_decay):
          'lr': decoder_lr, 'weight_decay': 0.0}
     ]
     return optimizer_parameters
+
+
+class SmartBatchingSampler(Sampler):
+    """
+    SmartBatching Sampler with naive pytorch torch.utils.data.Sampler implementation
+    Reference:
+        https://www.kaggle.com/code/rhtsingh/speeding-up-transformer-w-optimization-strategies
+    """
+    def __init__(self, data_source, batch_size):
+        super(SmartBatchingSampler, self).__init__(data_source)
+        self.len = len(data_source)
+        sample_lengths = [len(seq) for seq in data_source]
+        argsort_inds = np.argsort(sample_lengths)
+        self.batches = list(more_itertools.chunked(argsort_inds, n=batch_size))
+        self._backsort_inds = None
+
+    def __iter__(self):
+        if self.batches:
+            last_batch = self.batches.pop(-1)
+            np.random.shuffle(self.batches)
+            self.batches.append(last_batch)
+        self._inds = list(more_itertools.flatten(self.batches))
+        yield from self._inds
+
+    def __len__(self):
+        return self.len
+
+    @property
+    def backsort_inds(self):
+        if self._backsort_inds is None:
+            self._backsort_inds = np.argsort(self._inds)
+        return self._backsort_inds
 
 
 class SmartBatchingCollate:
@@ -98,24 +133,40 @@ class SmartBatchingCollate:
         return padded_sequences, attention_masks
 
 
-class Collate(object):
+class MiniBatchCollate(object):
     """
     Collate class for torch.utils.data.DataLoader
     This class object to use variable data such as NLP text sequence
     If you use static padding with AutoTokenizer, you don't need this class object
     But if you use dynamic padding with AutoTokenizer, you must use this class object & call
     Args:
-
+        batch: data instance from torch.utils.data.DataSet
     """
-    def __init__(self) -> None:
+    def __init__(self, batch: torch.utils.data.DataLoader) -> None:
+        self.batch = batch
 
-    def __call__(self):
-
-        return
+    def __call__(self) -> tuple[dict[Tensor, Tensor, Tensor], Tensor, Tensor]:
+        inputs, labels, position_list = self.batch
+        labels = torch.nn.utils.rnn.pad_sequence(
+            labels,
+            batch_first=True,
+            padding_value=-1
+        )
+        position_list = torch.nn.utils.rnn.pad_sequence(
+            position_list,
+            batch_first=True,
+            padding_value=-1
+        )
+        return inputs, labels, position_list
 
 
 def collate(inputs):
-    """ Descending sort inputs by length of sequence, used for speed up training """
+    """
+    slice input sequence by maximum length sequence in mini-batch, used for speed up training
+    if you want slice other variable such as label feature, you can add param on them
+    Args:
+        inputs: list of dict, dict has keys of "input_ids", "attention_mask", "token_type_ids"
+    """
     mask_len = int(inputs["attention_mask"].sum(axis=1).max())
     for k, v in inputs.items():
         inputs[k] = inputs[k][:, :mask_len]

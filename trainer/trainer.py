@@ -49,7 +49,7 @@ class DictWiseTrainer:
             batch_size=self.cfg.batch_size,
             shuffle=True,
             worker_init_fn=seed_worker,
-            collate_fn=collate,
+            collate_fn=MiniBatchCollate,
             generator=self.generator,
             num_workers=self.cfg.num_workers,
             pin_memory=True,
@@ -61,7 +61,7 @@ class DictWiseTrainer:
             batch_size=self.cfg.val_batch_size,
             shuffle=False,
             worker_init_fn=seed_worker,
-            collate_fn=collate,
+            collate_fn=MiniBatchCollate,
             generator=self.generator,
             num_workers=self.cfg.num_workers,
             pin_memory=True,
@@ -103,7 +103,6 @@ class DictWiseTrainer:
         model.train()
         for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_train)):  # Maybe need to append
             optimizer.zero_grad()
-            prompt = collate(prompt)
             for k, v in prompt.items():
                 prompt[k] = v.to(self.cfg.device)  # prompt to GPU
 
@@ -113,7 +112,7 @@ class DictWiseTrainer:
                 cell_features = model(prompt, all_position)
                 for feature_idx in range(batch_size):
                     # loss must be calculated in instance level (not batch level)
-                    loss = loss + criterion(cell_features[feature_idx], cell_features[feature_idx], ranks)
+                    loss = loss + criterion(cell_features[feature_idx], cell_features[feature_idx], ranks[ranks != -1])
 
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
