@@ -253,23 +253,26 @@ class PairWiseTrainer:
         scaler = torch.cuda.amp.GradScaler(enabled=self.cfg.amp_scaler)
         loss, losses = 0, AverageMeter()
         model.train()
-        for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_train)):  # Maybe need to append
+        for step, (prompt, _, all_position, pair_rank_list, pair_target_list) in enumerate(tqdm(loader_train)):  # Maybe need to append
             optimizer.zero_grad()
             prompt = collate(prompt)  # speed up for training
             for k, v in prompt.items():
                 prompt[k] = v.to(self.cfg.device)  # prompt to GPU
-            ranks = ranks.to(self.cfg.device)
+            pair_rank_list = pair_rank_list.to(self.cfg.device)
+            pair_target_list = pair_target_list.to(self.cfg.device)
+
+            # ranks = ranks.to(self.cfg.device)
             # ranks = ranks.squeeze(dim=0).to(self.cfg.device)
             batch_size = self.cfg.batch_size
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)  # cell_features.shape: [batch_size, num_cell]
             for feature_idx in range(batch_size):
-                # loss must be calculated in instance level (not batch level), [ranks[feature_idx] != -1]
-                loss += criterion(
-                    cell_features[feature_idx],
-                    cell_features[feature_idx],
-                    ranks[feature_idx],
-                )
+                for rank_idx in range(len(pair_rank_list[feature_idx])):
+                    loss = loss + criterion(
+                        cell_features[pair_rank_list[feature_idx][rank_idx][0]],
+                        cell_features[pair_rank_list[feature_idx][rank_idx][1]],
+                        pair_target_list[feature_idx][rank_idx],
+                    )
 
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
@@ -277,8 +280,7 @@ class PairWiseTrainer:
             scaler.scale(loss).backward()
             losses.update(loss.detach(), batch_size)
 
-            if self.cfg.clipping_grad and (
-                    step + 1) % self.cfg.n_gradient_accumulation_steps == 0 or self.cfg.n_gradient_accumulation_steps == 1:
+            if self.cfg.clipping_grad and (step + 1) % self.cfg.n_gradient_accumulation_steps == 0 or self.cfg.n_gradient_accumulation_steps == 1:
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm(
                     model.parameters(),
@@ -299,7 +301,7 @@ class PairWiseTrainer:
         val_metric, metrics = 0, AverageMeter()
         model.eval()
         with torch.no_grad():
-            for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_valid)):
+            for step, (prompt, ranks, all_position, _, _) in enumerate(tqdm(loader_valid)):
                 prompt = collate(prompt)  # speed up for training
                 for k, v in prompt.items():
                     prompt[k] = v.to(self.cfg.device)  # prompt to GPU

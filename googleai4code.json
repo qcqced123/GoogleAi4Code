@@ -8,7 +8,7 @@
         "state_dict": "",
         "name": "PairWiseTrainer",
         "loop": "train_loop",
-        "dataset": "GoogleAiDataset",
+        "dataset": "DictionaryWiseDataset",
         "model_arch": "GoogleAi4CodeModel",
         "model": "microsoft/deberta-v3-large",
         "pooling": "SubSequenceGEMPooling"
