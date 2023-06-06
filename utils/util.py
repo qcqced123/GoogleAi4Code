@@ -112,6 +112,7 @@ def sync_config(json_config: json) -> None:
     """ Loss Options """
     CFG.loss_fn = json_config.loss_options.loss_fn
     # CFG.val_loss_fn = json_config.loss_options.val_loss_fn
+    CFG.margin = json_config.loss_options.margin
     CFG.reduction = json_config.loss_options.reduction
 
     """ Metrics Options """
@@ -140,6 +141,7 @@ def sync_config(json_config: json) -> None:
     CFG.anneal_strategy = json_config.swa_options.anneal_strategy
 
     """ model_utils """
+    CFG.init_weight = json_config.model_utils.init_weight
     CFG.stop_mode = json_config.model_utils.stop_mode
     CFG.reinit = json_config.model_utils.reinit
     CFG.num_freeze = json_config.model_utils.num_freeze

@@ -60,7 +60,18 @@ class GoogleAi4CodeModel(nn.Module):
     def _init_weights(self, module) -> None:
         """ over-ride initializes weights of the given module function (+initializes LayerNorm) """
         if isinstance(module, nn.Linear):
-            module.weight.data.normal_(mean=0.0, std=self.auto_cfg.initializer_range)
+            if self.cfg.init_weight == 'normal':
+                module.weight.data.normal_(mean=0.0, std=self.auto_cfg.initializer_range)
+            elif self.cfg.init_weight == 'xavier_uniform':
+                module.weight.data = nn.init.xavier_uniform_(module.weight.data)
+            elif self.cfg.init_weight == 'xavier_normal':
+                module.weight.data = nn.init.xavier_normal_(module.weight.data)
+            elif self.cfg.init_weight == 'kaiming_uniform':
+                module.weight.data = nn.init.kaiming_uniform_(module.weight.data)
+            elif self.cfg.init_weight == 'kaiming_normal':
+                module.weight.data = nn.init.kaiming_normal_(module.weight.data)
+            elif self.cfg.init_weight == 'orthogonal':
+                module.weight.data = nn.init.orthogonal_(module.weight.data)
             if module.bias is not None:
                 module.bias.data.zero_()
         elif isinstance(module, nn.Embedding):
@@ -79,13 +90,33 @@ class GoogleAi4CodeModel(nn.Module):
     def forward(self, inputs: dict, position_list: Tensor) -> Tensor:
         outputs = self.feature(inputs)
         feature = outputs.last_hidden_state
-        pred = torch.tensor([], device=self.cfg.device)
+        # pred = torch.tensor([], device=self.cfg.device)
+        # for i in range(self.cfg.batch_size):
+        #     """ Apply Pooling & Fully Connected Layer for each unique cell in batch (one notebook_id) """
+        #     for idx in range(len(position_list[i])):
+        #         # if not position_list[i][idx] == -1:
+        #         src, end = position_list[i][idx]
+        #         embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # maybe don't need mask
+        #         logit = self.fc(embedding)
+        #         pred = torch.cat([pred, logit], dim=0)
+
+        # pred = []
+        # for i in range(self.cfg.batch_size):
+        #     """ Apply Pooling & Fully Connected Layer for each unique cell in batch (one notebook_id) """
+        #     for idx in range(len(position_list[i])):
+        #         # if not position_list[i][idx] == -1:
+        #         src, end = position_list[i][idx]
+        #         embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # maybe don't need mask
+        #         logit = self.fc(embedding)
+        #         pred.append(logit)
+        pred = []
         for i in range(self.cfg.batch_size):
             """ Apply Pooling & Fully Connected Layer for each unique cell in batch (one notebook_id) """
             for idx in range(len(position_list[i])):
                 # if not position_list[i][idx] == -1:
                 src, end = position_list[i][idx]
-                embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # maybe don't need mask
+                print(feature[i, src:end + 1, :].unsqueeze(dim=0).shape)
+                embedding = torch.mean(feature[i, src:end + 1, :].unsqueeze(dim=0), dim=1)  # maybe don't need mask
                 logit = self.fc(embedding)
-                pred = torch.cat([pred, logit], dim=0)
+                pred.append(logit)
         return pred

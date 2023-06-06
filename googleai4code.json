@@ -8,7 +8,7 @@
         "state_dict": "",
         "name": "PairWiseTrainer",
         "loop": "train_loop",
-        "dataset": "DictionaryWiseDataset",
+        "dataset": "PairwiseDataset",
         "model_arch": "GoogleAi4CodeModel",
         "model": "microsoft/deberta-v3-large",
         "pooling": "SubSequenceGEMPooling"
@@ -38,6 +38,7 @@
     },
     "loss_options": {
         "loss_fn": "MarginRankingLoss",
+        "margin": 0.5,
         "reduction": "mean"
     },
     "metrics_options": {
@@ -66,6 +67,7 @@
         "anneal_strategy": "cos"
     },
     "model_utils": {
+        "init_weight": "xavier_normal",
         "stop_mode": "max",
         "freeze": true,
         "num_freeze": 12,

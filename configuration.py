@@ -44,6 +44,7 @@ class CFG:
     """ Loss & Metrics Options """
     loss_fn = 'SmoothL1Loss'
     # val_loss_fn = 'WeightedMSELoss'
+    margin = 0.5
     reduction = 'mean'
     metrics = ['MCRMSE', 'f_beta', 'recall']
 
@@ -71,6 +72,7 @@ class CFG:
     anneal_strategy = 'cos'  # default = cos, available option: linear
 
     """ Model_Utils Options """
+    init_weight = 'xavier_normal'
     stop_mode = 'min'
     freeze = False
     num_freeze = 2

@@ -136,7 +136,7 @@ class MarginRankingLoss(nn.Module):
         https://pytorch.org/docs/stable/_modules/torch/nn/functional.html#margin_ranking_loss
         https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html
     """
-    def __init__(self, margin: float = 0.5, size_average=True, reduce=True, reduction: str = 'mean') -> None:
+    def __init__(self, margin: float = 0.5, reduction: str = 'mean', size_average=True, reduce=True) -> None:
         super().__init__()
         self.__constants__ = ['margin', 'reduction']
         self.margin = margin
@@ -151,6 +151,4 @@ class MarginRankingLoss(nn.Module):
             target,
             margin=self.margin,
             reduction=self.reduction,
-            size_average=self.size_average,
-            reduce=self.reduce,
         )

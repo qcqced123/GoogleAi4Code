@@ -222,8 +222,8 @@ class PairwiseDataset(Dataset):
                 cd_position.append([src, end])
                 break
 
-        md_position = torch.as_tensor(md_position)  # for validation stage
-        cd_position = torch.as_tensor(cd_position)
+        md_position = torch.tensor(md_position)  # for validation stage
+        cd_position = torch.tensor(cd_position)
         all_position = torch.cat([md_position, cd_position], dim=0)
 
         # 5) Make Ranking list for Margin Ranking Loss by itertools.combinations
@@ -231,10 +231,10 @@ class PairwiseDataset(Dataset):
         pair_target_list = []
         for idx in range(len(pair_rank_list)):
             if ranks[pair_rank_list[idx][0]] < ranks[pair_rank_list[idx][1]]:
-                pair_target_list[idx] = -1
+                pair_target_list.append(-1)
             else:
-                pair_target_list[idx] = 1
-        pair_rank_list = torch.as_tensor(pair_rank_list)
-        pair_target_list = torch.as_tensor(pair_target_list)
+                pair_target_list.append(1)
+        pair_rank_list = torch.tensor(pair_rank_list)
+        pair_target_list = torch.tensor(pair_target_list)
         return prompt, ranks, all_position, pair_rank_list, pair_target_list
 

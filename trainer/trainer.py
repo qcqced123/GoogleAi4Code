@@ -229,7 +229,7 @@ class PairWiseTrainer:
             model.load_state_dict(torch.load(self.cfg.checkpoint_dir + self.cfg.state_dict))
         model.to(self.cfg.device)
 
-        criterion = getattr(loss_fn, self.cfg.loss_fn)(self.cfg.reduction)
+        criterion = getattr(loss_fn, self.cfg.loss_fn)(self.cfg.margin, self.cfg.reduction)
         val_metrics = getattr(model_metric, self.cfg.metrics)()
         grouped_optimizer_params = get_optimizer_grouped_parameters(
             model,
@@ -260,20 +260,20 @@ class PairWiseTrainer:
                 prompt[k] = v.to(self.cfg.device)  # prompt to GPU
             pair_rank_list = pair_rank_list.to(self.cfg.device)
             pair_target_list = pair_target_list.to(self.cfg.device)
+            batch_size = self.cfg.batch_size
 
             # ranks = ranks.to(self.cfg.device)
             # ranks = ranks.squeeze(dim=0).to(self.cfg.device)
-            batch_size = self.cfg.batch_size
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)  # cell_features.shape: [batch_size, num_cell]
+
             for feature_idx in range(batch_size):
                 for rank_idx in range(len(pair_rank_list[feature_idx])):
-                    loss = loss + criterion(
-                        cell_features[pair_rank_list[feature_idx][rank_idx][0]],
-                        cell_features[pair_rank_list[feature_idx][rank_idx][1]],
-                        pair_target_list[feature_idx][rank_idx],
+                    loss += criterion(
+                        cell_features[pair_rank_list[feature_idx][rank_idx][0]].squeeze(dim=0),
+                        cell_features[pair_rank_list[feature_idx][rank_idx][1]].squeeze(dim=0),
+                        pair_target_list[feature_idx][rank_idx].unsqueeze(dim=0)
                     )
-
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
 
@@ -290,8 +290,7 @@ class PairWiseTrainer:
                 scaler.update()
                 lr_scheduler.step()
 
-            gc.collect()
-
+        gc.collect()
         train_loss = losses.avg.detach().cpu().numpy()
         return train_loss
 
