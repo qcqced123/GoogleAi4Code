@@ -5,6 +5,16 @@ import torch.nn.functional as F
 from torch import Tensor
 
 
+def zero_filtering(x: torch.Tensor) -> torch.Tensor:
+    """
+    Add eps value for zero embedding, because competition metric is cosine similarity
+    Cosine Similarity will be returned NaN, when input value has zero
+    """
+    eps = 1e-8
+    x[x == 0] = eps
+    return x
+
+
 def freeze(module) -> None:
     """
     Freezes module's parameters.

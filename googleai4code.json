@@ -6,7 +6,7 @@
         "load_pretrained": false,
         "resume": false,
         "state_dict": "",
-        "name": "DictWiseTrainer",
+        "name": "PairWiseTrainer",
         "loop": "train_loop",
         "dataset": "GoogleAiDataset",
         "model_arch": "GoogleAi4CodeModel",
@@ -26,8 +26,8 @@
         "n_folds": 5,
         "max_len": 2048,
         "epochs": 5,
-        "batch_size": 8,
-        "val_batch_size": 8
+        "batch_size": 1,
+        "val_batch_size": 1
     },
     "gradient_settings": {
         "amp_scaler": true,
@@ -37,7 +37,7 @@
         "max_grad_norm": 1000
     },
     "loss_options": {
-        "loss_fn": "MultipleNegativeRankingLoss",
+        "loss_fn": "MarginRankingLoss",
         "reduction": "mean"
     },
     "metrics_options": {

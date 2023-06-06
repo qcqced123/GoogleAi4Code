@@ -124,41 +124,33 @@ class BinaryCrossEntropyLoss(nn.Module):
         return criterion(y_pred, y_true)
 
 
-class FocalLoss(nn.Module):
+class MarginRankingLoss(nn.Module):
     """
-    This is a implementation of Focal Loss with smooth label cross entropy supported which is proposed in
+    This class to calculate loss values by comparing the rank of different two input's elements.
+    Creates a criterion that measures the loss given inputs, Source code from pytorch official repository
+    Forward Call Args:
+        input1 (Tensor): Tensor of dimension 1D or 0D Tensor
+        input2 (Tensor): Same dimension as input1, in this case, we put same tensor input1 & input2
+        target (Tensor): Tensor of the same shape as input1 containing the rank value
+    Reference:
+        https://pytorch.org/docs/stable/_modules/torch/nn/functional.html#margin_ranking_loss
+        https://pytorch.org/docs/stable/generated/torch.nn.MarginRankingLoss.html
     """
-    def __init__(self, gamma=0, alpha=None, size_average=True):
-        super(FocalLoss, self).__init__()
-        self.gamma = gamma
-        self.alpha = alpha
-        if isinstance(alpha, (float, int)): self.alpha = torch.Tensor([alpha, 1 - alpha])
-        if isinstance(alpha, list): self.alpha = torch.Tensor(alpha)
+    def __init__(self, margin: float = 0.5, size_average=True, reduce=True, reduction: str = 'mean') -> None:
+        super().__init__()
+        self.__constants__ = ['margin', 'reduction']
+        self.margin = margin
+        self.reduction = reduction
         self.size_average = size_average
+        self.reduce = reduce
 
-    def forward(self, input, target):
-        if input.dim() > 2:
-            input = input.view(input.size(0), input.size(1), -1)  # N,C,H,W => N,C,H*W
-            input = input.transpose(1, 2)  # N,C,H*W => N,H*W,C
-            input = input.contiguous().view(-1, input.size(2))  # N,H*W,C => N*H*W,C
-        target = target.view(-1, 1)
-
-        logpt = F.log_softmax(input)
-        logpt = logpt.gather(1, target)
-        logpt = logpt.view(-1)
-        pt = Variable(logpt.data.exp())
-
-        if self.alpha is not None:
-            if self.alpha.type() != input.data.type():
-                self.alpha = self.alpha.type_as(input.data)
-            select = (target != 0).type(torch.LongTensor).cuda()
-            at = self.alpha.gather(0, select.data.view(-1))
-            logpt = logpt * Variable(at)
-
-        loss = -1 * (1 - pt) ** self.gamma * logpt
-        if self.size_average:
-            return loss.mean()
-        else:
-            return loss.sum()
-
-
+    def forward(self, input1: Tensor, input2: Tensor, target: Tensor) -> Tensor:
+        return F.margin_ranking_loss(
+            input1,
+            input2,
+            target,
+            margin=self.margin,
+            reduction=self.reduction,
+            size_average=self.size_average,
+            reduce=self.reduce,
+        )

@@ -56,7 +56,7 @@ class GoogleAiDataset(Dataset):
         tmp_token_list = []
         for idx in range(len(ranks)):
             tmp_token_list.append(subsequent_tokenizing(self.cfg, sources[idx]))
-        adjust_inputs, _ = adjust_sequences(tmp_token_list, self.cfg.max_len)
+        adjust_inputs, _ = adjust_sequences(tmp_token_list, (self.cfg.max_len - len(ranks) + 5))
         for idx in range(len(adjust_inputs)):
             sources[idx] = self.subsequent_decode(self.cfg, adjust_inputs[idx])  # decode to prompt text & convert
 
@@ -68,7 +68,7 @@ class GoogleAiDataset(Dataset):
             if cell_types[idx] == 'markdown':
                 md_prompt += sources[idx] + self.cfg.tokenizer.markdown_token
                 md_rank.append(ranks[idx])
-            else:
+            elif cell_types[idx] == 'code':
                 cd_prompt += sources[idx] + self.cfg.tokenizer.code_token
                 cd_rank.append(ranks[idx])
 

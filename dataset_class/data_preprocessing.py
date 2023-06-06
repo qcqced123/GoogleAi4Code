@@ -84,7 +84,7 @@ def tokenizing(cfg: configuration.CFG, text: str) -> any:
     return inputs
 
 
-def adjust_sequences(sequences: list, max_len: int = 2048):
+def adjust_sequences(sequences: list, max_len: int):
     """
     similar to dynamic padding concept
     Args:
@@ -103,7 +103,7 @@ def adjust_sequences(sequences: list, max_len: int = 2048):
     for _ in range(cut_off):
         max_index = length_of_seqs.index(max(length_of_seqs))
         length_of_seqs[max_index] -= 1
-    sequences = [sequences[i][:l] for i, l in enumerate(length_of_seqs)]
+    sequences = [sequences[i][:l-1] for i, l in enumerate(length_of_seqs)]
 
     return sequences, length_of_seqs
 

@@ -3,6 +3,8 @@ import torch.nn as nn
 from torch import Tensor
 import torch.nn.functional as F
 
+from .model_utils import zero_filtering
+
 
 # WeightedLayerPooling: Use Intermediate Layer's Embedding
 class WeightedLayerPooling(nn.Module):
@@ -108,16 +110,16 @@ class SubSequenceGEMPooling(nn.Module):
     """
     def __init__(self, auto_cfg) -> None:
         super(SubSequenceGEMPooling, self).__init__()
-        self.eps = 1e-6
 
-    def forward(self, last_hidden_state, p: int = 4) -> Tensor:
+    @staticmethod
+    def forward(last_hidden_state, p: int = 4) -> Tensor:
         """
         last_hidden_state.size: [1, cell_sequence, hidden_size]
         1) Pow last_hidden_state with p and then take a averaging
         2) pow sum_embeddings with 1/p
         """
-        sum_embeddings = torch.mean(torch.pow(last_hidden_state, p), 1) + self.eps
-        gem_embeddings = torch.pow(sum_embeddings, 1 / p) + self.eps
+        sum_embeddings = torch.mean(zero_filtering(torch.pow(last_hidden_state, p)), 1)
+        gem_embeddings = zero_filtering(torch.pow(sum_embeddings, 1 / p))
         return gem_embeddings
 
 
