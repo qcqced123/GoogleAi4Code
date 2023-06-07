@@ -86,7 +86,10 @@ def tokenizing(cfg: configuration.CFG, text: str) -> any:
 
 def adjust_sequences(sequences: list, max_len: int):
     """
-    similar to dynamic padding concept
+    Similar to dynamic padding concept
+    Append slicing index from original, because original source code is implemented weired
+    So it generates some problem for applying very longer sequence
+    Add -1 value to slicing index, so we can get result what we want
     Args:
         sequences: list of each cell's token sequence in one unique notebook id, must pass tokenized sequence input_ids
         => sequences = [[1,2,3,4,5,6], [1,2,3,4,5,6], ... , [1,2,3,4,5]]

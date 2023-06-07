@@ -193,6 +193,7 @@ class PairwiseDataset(Dataset):
         md_count, cd_count, sep_count, src, end = 0, 0, 0, 0, 0
         for idx, input_id in enumerate(prompt['input_ids']):
             # make markdown token position list
+            # need to check this algorthm is correct
             if idx == 1:
                 md_count += 1
                 src = idx + 1

@@ -6,10 +6,10 @@
         "load_pretrained": false,
         "resume": false,
         "state_dict": "",
-        "name": "PairWiseTrainer",
+        "name": "PairwiseTrainer",
         "loop": "train_loop",
         "dataset": "PairwiseDataset",
-        "model_arch": "GoogleAi4CodeModel",
+        "model_arch": "PairwiseModel",
         "model": "microsoft/deberta-v3-large",
         "pooling": "SubSequenceGEMPooling"
     },
@@ -38,7 +38,7 @@
     },
     "loss_options": {
         "loss_fn": "MarginRankingLoss",
-        "margin": 0.5,
+        "margin": 1,
         "reduction": "mean"
     },
     "metrics_options": {
@@ -72,7 +72,7 @@
         "freeze": true,
         "num_freeze": 12,
         "reinit": true,
-        "num_reinit": 4,
+        "num_reinit": 0,
         "awp": false,
         "nth_awp_start_epoch": 2,
         "awp_eps": 1e-2,

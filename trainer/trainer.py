@@ -165,7 +165,7 @@ class DictWiseTrainer:
         return metric
 
 
-class PairWiseTrainer:
+class PairwiseTrainer:
     """
     Trainer Class for Pair-wise(Margin Ranking Loss) Model Pipeline
     This class have 4 function:
