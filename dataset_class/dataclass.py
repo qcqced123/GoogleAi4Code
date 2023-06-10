@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 from torch import Tensor
 
 import configuration
-from dataset_class.data_preprocessing import tokenizing, subsequent_tokenizing, adjust_sequences, subsequent_decode
+from dataset_class.data_preprocessing import *
 
 
 class DictionaryWiseDataset(Dataset):
@@ -41,7 +41,9 @@ class DictionaryWiseDataset(Dataset):
         cell_ids = np.array(ast.literal_eval(self.cell_id_list[item]))
         cell_types = np.array(ast.literal_eval(self.cell_type_list[item]))
         ranks = np.array(ast.literal_eval(self.rank_list[item]))
-        sources = np.array(ast.literal_eval(self.source_list[item]))  # need to apply encode & decode
+        sources = normalize_words(
+            np.array(ast.literal_eval(self.source_list[item]))
+        )
 
         # 1) Augment Data for train stage: shuffle target value's position index
         if not self.is_valid:
@@ -55,7 +57,8 @@ class DictionaryWiseDataset(Dataset):
         # 2) Apply Dynamic Padding
         tmp_token_list = []
         for idx in range(len(ranks)):
-            tmp_token_list.append(subsequent_tokenizing(self.cfg, sources[idx]))
+            tmp_token_list.append(subsequent_tokenizing(self.cfg, cleaning_words(sources[idx])))
+
         adjust_inputs, _ = adjust_sequences(tmp_token_list, (self.cfg.max_len - len(ranks) + 5))
         for idx in range(len(adjust_inputs)):
             sources[idx] = self.subsequent_decode(self.cfg, adjust_inputs[idx])  # decode to prompt text & convert
@@ -153,7 +156,9 @@ class PairwiseDataset(Dataset):
         cell_ids = np.array(ast.literal_eval(self.cell_id_list[item]))
         cell_types = np.array(ast.literal_eval(self.cell_type_list[item]))
         ranks = np.array(ast.literal_eval(self.rank_list[item]))
-        sources = np.array(ast.literal_eval(self.source_list[item]))  # need to apply encode & decode
+        sources = normalize_words(
+            np.array(ast.literal_eval(self.source_list[item]))
+        )
 
         # 1) Augment Data for train stage: shuffle target value's position index
         if not self.is_valid:
@@ -167,7 +172,7 @@ class PairwiseDataset(Dataset):
         # 2) Apply Dynamic Padding
         tmp_token_list = []
         for idx in range(len(ranks)):
-            tmp_token_list.append(subsequent_tokenizing(self.cfg, sources[idx]))
+            tmp_token_list.append(subsequent_tokenizing(self.cfg, cleaning_words(sources[idx])))
         adjust_inputs, _ = adjust_sequences(tmp_token_list, (self.cfg.max_len - len(ranks) + 5))
         for idx in range(len(adjust_inputs)):
             sources[idx] = self.subsequent_decode(self.cfg, adjust_inputs[idx])  # decode to prompt text & convert
@@ -192,8 +197,7 @@ class PairwiseDataset(Dataset):
         md_position, cd_position = [], []
         md_count, cd_count, sep_count, src, end = 0, 0, 0, 0, 0
         for idx, input_id in enumerate(prompt['input_ids']):
-            # make markdown token position list
-            # need to check this algorthm is correct
+            # make markdown token position list, need to check this algorthm is correct
             if idx == 1:
                 md_count += 1
                 src = idx + 1

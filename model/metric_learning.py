@@ -177,7 +177,9 @@ class MultipleNegativeRankingLoss(nn.Module):
             embeddings_b: same as embedding_a, but start at index 1
             labels: labels of mini-batch instance from competition dataset (rank), must be on same device with embedding
         """
-        similarity_scores = self.zero_filtering(self.similarity_fct(embeddings_a, embeddings_b)) * self.scale
+        similarity_scores = self.zero_filtering(
+            (self.similarity_fct(embeddings_a, embeddings_b) * self.scale)
+        )
         return self.cross_entropy_loss(similarity_scores, labels)
 
 

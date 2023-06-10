@@ -79,6 +79,11 @@ class DictionaryWiseModel(nn.Module):
         return outputs
 
     def forward(self, inputs: dict, position_list: Tensor) -> Tensor:
+        """
+        Return tensor for each subsequent cells in one notebook_id
+        Example:
+            pred = Tensor[subsequent cell1's logit, subsequent cell2's logit, ...]
+        """
         outputs = self.feature(inputs)
         feature = outputs.last_hidden_state
         pred = torch.tensor([], device=self.cfg.device)
@@ -163,6 +168,11 @@ class PairwiseModel(nn.Module):
         return outputs
 
     def forward(self, inputs: dict, position_list: Tensor) -> list[Tensor]:
+        """
+        Return list of logit for each subsequent cells in one notebook_id
+        Example:
+            pred = list[subsequent cell1's logit, subsequent cell2's logit, ...]
+        """
         outputs = self.feature(inputs)
         feature = outputs.last_hidden_state
         pred = []

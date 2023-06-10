@@ -241,6 +241,17 @@ def preprocess_text(source):
     return source
 
 
+def cleaning_words(text: str) -> str:
+    """ Apply all of cleaning process to text data """
+    tmp_text = links_to_word(text)
+    tmp_text = no_html_tags(tmp_text)
+    tmp_text = underscore_to_space(tmp_text)
+    tmp_text = no_char(tmp_text)
+    tmp_text = preprocess_text(tmp_text)
+    tmp_text = no_multi_spaces(tmp_text)
+    return tmp_text
+
+
 def sequence_length(cfg: configuration.CFG, text_list: list) -> list:
     """ Get sequence length of all text data for checking statistics value """
     length_list = []
@@ -367,7 +378,7 @@ def __normalize_words(titles: list) -> list:
     return titles
 
 
-def normalize_words(words: np.ndarray, unique=True) -> list:
+def normalize_words(words: np.ndarray, unique=True) -> np.ndarray:
     """
     Normalize a list of words
     1) Apply __normalize_word function

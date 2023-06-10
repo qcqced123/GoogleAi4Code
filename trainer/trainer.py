@@ -113,9 +113,6 @@ class DictWiseTrainer:
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)
                 loss = criterion(cell_features, cell_features, ranks)
-            # for feature_idx in range(batch_size):
-                # loss must be calculated in instance level (not batch level), ranks[ranks != -1]
-                # loss = loss + criterion(cell_features[feature_idx], cell_features[feature_idx], ranks)
 
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
@@ -132,7 +129,7 @@ class DictWiseTrainer:
                 torch.nn.utils.clip_grad_norm(
                     model.parameters(),
                     self.cfg.max_grad_norm * self.cfg.n_gradient_accumulation_steps
-                )  # gradient norm 다 없애보자 한번
+                )
                 scaler.step(optimizer)
                 scaler.update()
                 lr_scheduler.step()
@@ -142,24 +139,26 @@ class DictWiseTrainer:
         train_loss = losses.avg.detach().cpu().numpy()
         return train_loss
 
-    # Validation Function
     def valid_fn(self, loader_valid, model, val_metrics) -> float:
         """ Validation Functions """
-        metrics = AverageMeter()
+        val_metric, metrics = 0, AverageMeter()
         model.eval()
         with torch.no_grad():
-            for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_valid)):
+            for step, (prompt, ranks, all_position, _, _) in enumerate(tqdm(loader_valid)):
+                prompt = collate(prompt)  # speed up for training
                 for k, v in prompt.items():
                     prompt[k] = v.to(self.cfg.device)  # prompt to GPU
-
                 val_batch_size = prompt.shape[0]
-                ranks = ranks.to(self.cfg.device)
+                ranks = ranks.squeeze(dim=0).to(self.cfg.device)
 
                 cell_features = model(prompt, all_position)
-                # for feature_idx in range(val_batch_size):
-                #     val_metric = val_metrics(cell_features[feature_idx], ranks)  # calculate metric per instance
-                val_metric = val_metrics(cell_features, ranks)
-                metrics.update(val_metric.detach(), 1)
+                for feature_idx in range(val_batch_size):
+                    val_metric = val_metric + val_metrics(
+                        cell_features[feature_idssx],
+                        ranks[feature_idx]
+                    )  # calculate metric per instance
+                # val_metric = val_metrics(cell_features, ranks)
+                metrics.update(val_metric.detach(), val_batch_size)
 
         metric = metrics.avg.detach().cpu().numpy()
         gc.collect()
@@ -263,18 +262,16 @@ class PairwiseTrainer:
             pair_target_list = pair_target_list.to(self.cfg.device)
             batch_size = self.cfg.batch_size
 
-            # ranks = ranks.to(self.cfg.device)
-            # ranks = ranks.squeeze(dim=0).to(self.cfg.device)
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)  # cell_features.shape: [batch_size, num_cell]
 
-            for feature_idx in range(batch_size):
-                for rank_idx in range(len(pair_rank_list[feature_idx])):
-                    loss += criterion(
-                        cell_features[pair_rank_list[feature_idx][rank_idx][0]].squeeze(dim=0),
-                        cell_features[pair_rank_list[feature_idx][rank_idx][1]].squeeze(dim=0),
-                        pair_target_list[feature_idx][rank_idx].unsqueeze(dim=0)
-                    )
+                for feature_idx in range(batch_size):
+                    for rank_idx in range(len(pair_rank_list[feature_idx])):
+                        loss += criterion(
+                            cell_features[pair_rank_list[feature_idx][rank_idx][0]].squeeze(dim=0),
+                            cell_features[pair_rank_list[feature_idx][rank_idx][1]].squeeze(dim=0),
+                            pair_target_list[feature_idx][rank_idx].unsqueeze(dim=0)
+                        )
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
 
@@ -291,7 +288,8 @@ class PairwiseTrainer:
                 scaler.update()
                 lr_scheduler.step()
 
-        gc.collect()
+            gc.collect()
+
         train_loss = losses.avg.detach().cpu().numpy()
         return train_loss
 
