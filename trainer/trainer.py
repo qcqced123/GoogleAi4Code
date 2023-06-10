@@ -1,5 +1,3 @@
-import gc
-import math
 import dataset_class.dataclass as dataset_class
 import model.metric as model_metric
 import model.metric_learning as metric_learning
@@ -111,11 +109,10 @@ class DictWiseTrainer:
 
             ranks = ranks.squeeze(dim=0).to(self.cfg.device)
             batch_size = self.cfg.batch_size
+            torch.cuda.amp.autocast.longto_float16(enabled=False)
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)
-                print(cell_features)
-            loss = criterion(cell_features, cell_features, ranks)
-            print(loss)
+                loss = criterion(cell_features, cell_features, ranks)
             # for feature_idx in range(batch_size):
                 # loss must be calculated in instance level (not batch level), ranks[ranks != -1]
                 # loss = loss + criterion(cell_features[feature_idx], cell_features[feature_idx], ranks)
@@ -127,11 +124,15 @@ class DictWiseTrainer:
             losses.update(loss.detach(), batch_size)
 
             if self.cfg.clipping_grad and (step + 1) % self.cfg.n_gradient_accumulation_steps == 0 or self.cfg.n_gradient_accumulation_steps == 1:
+                """
+                Step 1. unscale 빼보기
+                Step 2. clip_grad_norm 빼보기
+                """
                 scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm(
                     model.parameters(),
                     self.cfg.max_grad_norm * self.cfg.n_gradient_accumulation_steps
-                )
+                )  # gradient norm 다 없애보자 한번
                 scaler.step(optimizer)
                 scaler.update()
                 lr_scheduler.step()

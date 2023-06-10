@@ -246,7 +246,7 @@ def sequence_length(cfg: configuration.CFG, text_list: list) -> list:
     length_list = []
     for text in tqdm(text_list):
         tmp_text = tokenizing(cfg, text)['attention_mask']
-        length_list.append(tmp_text[tmp_text == 1].shape[0])
+        length_list.append(tmp_text.count(1))
     return length_list
 
 

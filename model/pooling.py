@@ -128,7 +128,7 @@ class GEMPooling(nn.Module):
     """
     Generalized Mean Pooling for Natural Language Processing
     This class version of GEMPooling for NLP, Transfer from Computer Vision Task Code
-
+    In other words, GEMPooling == Lp-Norm Pooling
     Mean Pooling <= GEMPooling <= Max Pooling
     Because of doing exponent to each token embeddings, GEMPooling is like as weight to more activation token
 

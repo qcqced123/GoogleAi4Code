@@ -16,15 +16,6 @@ class DictionaryWiseModel(nn.Module):
         cfg: configuration.CFG
     Reference:
         https://www.kaggle.com/competitions/AI4Code/discussion/368997
-        # pred_rank = []
-        # for i in range(self.cfg.batch_size):
-        #      Apply Pooling & Fully Connected Layer for each unique cell in batch (one notebook_id)
-        #     for idx in range(len(position_list[i])):
-        #         # if not position_list[i][idx] == -1:
-        #         src, end = position_list[i][idx]
-        #         embedding = self.pooling(feature[i, src:end+1, :].unsqueeze(dim=0))  # maybe don't need mask
-        #         logit = self.fc(embedding)
-        #         pred_rank.append(logit)
     """
     def __init__(self, cfg: configuration.CFG):
         super().__init__()
