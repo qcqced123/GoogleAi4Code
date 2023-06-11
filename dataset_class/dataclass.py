@@ -41,9 +41,8 @@ class DictionaryWiseDataset(Dataset):
         cell_ids = np.array(ast.literal_eval(self.cell_id_list[item]))
         cell_types = np.array(ast.literal_eval(self.cell_type_list[item]))
         ranks = np.array(ast.literal_eval(self.rank_list[item]))
-        sources = normalize_words(
-            np.array(ast.literal_eval(self.source_list[item]))
-        )
+        sources = np.array(ast.literal_eval(self.source_list[item]))
+
 
         # 1) Augment Data for train stage: shuffle target value's position index
         if not self.is_valid:
@@ -156,9 +155,7 @@ class PairwiseDataset(Dataset):
         cell_ids = np.array(ast.literal_eval(self.cell_id_list[item]))
         cell_types = np.array(ast.literal_eval(self.cell_type_list[item]))
         ranks = np.array(ast.literal_eval(self.rank_list[item]))
-        sources = normalize_words(
-            np.array(ast.literal_eval(self.source_list[item]))
-        )
+        sources = np.array(ast.literal_eval(self.source_list[item]))
 
         # 1) Augment Data for train stage: shuffle target value's position index
         if not self.is_valid:

@@ -35,6 +35,7 @@ class DictWiseTrainer:
 
     def make_batch(self, fold: int) -> tuple[torch.utils.data.DataLoader, torch.utils.data.DataLoader, pd.DataFrame]:
         """ Make Batch Dataset for main train loop """
+        self.df = self.df.iloc[0:100, :]
         train = self.df[self.df['fold'] != fold].reset_index(drop=True)
         valid = self.df[self.df['fold'] == fold].reset_index(drop=True)
 
@@ -109,10 +110,9 @@ class DictWiseTrainer:
 
             ranks = ranks.squeeze(dim=0).to(self.cfg.device)
             batch_size = self.cfg.batch_size
-            torch.cuda.amp.autocast.longto_float16(enabled=False)
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)
-                loss = criterion(cell_features, cell_features, ranks)
+            loss = criterion(cell_features, cell_features, ranks)
 
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
@@ -144,19 +144,21 @@ class DictWiseTrainer:
         val_metric, metrics = 0, AverageMeter()
         model.eval()
         with torch.no_grad():
-            for step, (prompt, ranks, all_position, _, _) in enumerate(tqdm(loader_valid)):
+            for step, (prompt, ranks, all_position) in enumerate(tqdm(loader_valid)):
                 prompt = collate(prompt)  # speed up for training
                 for k, v in prompt.items():
                     prompt[k] = v.to(self.cfg.device)  # prompt to GPU
-                val_batch_size = prompt.shape[0]
-                ranks = ranks.squeeze(dim=0).to(self.cfg.device)
-
-                cell_features = model(prompt, all_position)
-                for feature_idx in range(val_batch_size):
-                    val_metric = val_metric + val_metrics(
-                        cell_features[feature_idssx],
-                        ranks[feature_idx]
-                    )  # calculate metric per instance
+                val_batch_size = self.cfg.val_batch_size
+                val_pred = model(prompt, all_position).detach().cpu().T
+                val_metric = val_metric + val_metrics(
+                            val_pred.tolist(),
+                            ranks.tolist()
+                        )
+                # for feature_idx in range(val_batch_size):
+                #     val_metric = val_metric + val_metrics(
+                #         val_pred.tolist()[feature_idx],
+                #         ranks.tolist()[feature_idx]
+                #     )  # calculate metric per instance
                 # val_metric = val_metrics(cell_features, ranks)
                 metrics.update(val_metric.detach(), val_batch_size)
 
@@ -275,7 +277,7 @@ class PairwiseTrainer:
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
 
-            scaler.scale(loss).backward()
+            scaler.scale(loss).backward(retain_graph=True)
             losses.update(loss.detach(), batch_size)
 
             if self.cfg.clipping_grad and (step + 1) % self.cfg.n_gradient_accumulation_steps == 0 or self.cfg.n_gradient_accumulation_steps == 1:

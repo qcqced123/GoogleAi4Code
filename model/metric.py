@@ -1,3 +1,4 @@
+import math
 import numpy as np
 import torch
 import torch.nn as nn
@@ -166,7 +167,8 @@ class KendallTau(nn.Module):
         total_inversions = 0
         total_2max = 0  # twice the maximum possible inversions across all instances
         for gt, pred in zip(ground_truth, predictions):
-            ranks = [gt.index(x) for x in pred]  # rank predicted order in terms of ground truth
+            print(pred)
+            ranks = [gt.index(math.ceil(x)) for x in pred]  # rank predicted order in terms of ground truth
             total_inversions += self.count_inversions(ranks)
             n = len(gt)
             total_2max += n * (n - 1)

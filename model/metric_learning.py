@@ -5,6 +5,8 @@ import torch.nn.functional as F
 from typing import Iterable, Dict
 from torch import Tensor
 import sentence_transformers
+from .metric import CosineSimilarity
+from .model_utils import *
 from sentence_transformers.util import cos_sim
 from .loss import CrossEntropyLoss
 
@@ -73,55 +75,6 @@ class ContrastiveLoss(nn.Module):
         return contrastive_loss.mean()
 
 
-# Metric Learning: Multiple Negative Ranking Loss for CLIP Model (Image to Text)
-class CLIPMultipleNegativeRankingLoss(nn.Module):
-    """
-    Multiple Negative Ranking Loss for CLIP Model
-    main concept is same as original one, but append suitable for other type of model (Not Sentence-Transformers)
-
-    In Sentence-Transformer, they use calculate similarity used completely same embedding list
-    But in multi-modal task such as CLIP, they use different embedding list (image & text)
-    So we append similarity calculation part which is calculating same idx element in different embedding list
-
-    if you set more batch size, you can get more negative pairs for each anchor & positive pair
-    Args:
-        scale: output of similarity function is multiplied by this value => I don't know why this is needed
-        similarity_fct: standard of distance metrics, default cosine similarity
-    Reference:
-        https://arxiv.org/pdf/1705.00652.pdf
-        https://www.sbert.net/docs/package_reference/losses.html
-        https://github.com/UKPLab/sentence-transformers/blob/master/sentence_transformers/losses/MultipleNegativesRankingLoss.py
-        https://www.kaggle.com/code/nbroad/multiple-negatives-ranking-loss-lecr/notebook
-        https://github.com/KevinMusgrave/pytorch-metric-learning
-        https://www.youtube.com/watch?v=b_2v9Hpfnbw&ab_channel=NicholasBroad
-    """
-    def __init__(self, reduction: str, scale: float = 20.0, similarity_fct=cos_sim) -> None:
-        super().__init__()
-        self.reduction = reduction
-        self.eps = 1e-6
-        self.scale = scale
-        self.similarity_fct = similarity_fct
-        self.reduction = reduction
-        self.cross_entropy_loss = CrossEntropyLoss(self.reduction)
-
-    def forward(self, embeddings_a: torch.Tensor, embeddings_b: torch.Tensor):
-        """
-        Compute similarity between `a` and `b`.
-        Labels have the index of the row number at each row, same index means that they are ground truth
-        This indicates that `a_i` and `b_j` have high similarity
-        when `i==j` and low similarity when `i!=j`.
-        Example a[i] should match with b[i]
-        """
-        similarity_scores = self.similarity_fct(embeddings_a, embeddings_b) * self.scale + self.eps
-
-        labels = torch.tensor(
-            range(len(similarity_scores)),
-            dtype=torch.long,
-            device=similarity_scores.device,
-        )
-        return self.cross_entropy_loss(similarity_scores, labels)
-
-
 # Multiple Negative Ranking Loss, source code from UKPLab
 class MultipleNegativeRankingLoss(nn.Module):
     """
@@ -141,6 +94,11 @@ class MultipleNegativeRankingLoss(nn.Module):
         InputExample(texts=['Anchor 2', 'Positive 2'])]
         train_dataloader = DataLoader(train_examples, shuffle=True, batch_size=32)
         train_loss = losses.MultipleNegativesRankingLoss(model=model)
+    Warnings:
+        class param 'similarity_fct' is init with function 'cos_sim' in sentence_transformers.util
+        util.cos_sim has not data checker like as torch.nn.functional.CosineSimilarity
+        we add filter for this problem, but you must check your data before use this class
+        if you use torch.cuda.amp, you must use eps == 1e-4
 
     Reference:
         https://arxiv.org/pdf/1705.00652.pdf
@@ -159,16 +117,6 @@ class MultipleNegativeRankingLoss(nn.Module):
         self.reduction = reduction
         self.cross_entropy_loss = CrossEntropyLoss(self.reduction)
 
-    @staticmethod
-    def zero_filtering(x: torch.Tensor) -> torch.Tensor:
-        """
-        Add eps value for zero embedding, because competition metric is cosine similarity
-        Cosine Similarity will be returned NaN, when input value has zero
-        """
-        eps = 1e-8
-        x[x == 0] = eps
-        return x
-
     def forward(self, embeddings_a: Tensor, embeddings_b: Tensor, labels: Tensor) -> Tensor:
         """
         This Multiple Negative Ranking Loss (MNRL) is used for same embedding list,
@@ -177,9 +125,10 @@ class MultipleNegativeRankingLoss(nn.Module):
             embeddings_b: same as embedding_a, but start at index 1
             labels: labels of mini-batch instance from competition dataset (rank), must be on same device with embedding
         """
-        similarity_scores = self.zero_filtering(
-            (self.similarity_fct(embeddings_a, embeddings_b) * self.scale)
-        )
+        similarity_scores = zero_filtering(self.similarity_fct(embeddings_a, embeddings_b)) * self.scale
+        if check_nan(similarity_scores):
+            """ Check NaN Value in similarity_scores """
+            similarity_scores = nan_filtering(similarity_scores)
         return self.cross_entropy_loss(similarity_scores, labels)
 
 

@@ -3,7 +3,7 @@ import torch.nn as nn
 from torch import Tensor
 import torch.nn.functional as F
 
-from .model_utils import zero_filtering
+from .model_utils import zero_filtering, nan_filtering, check_nan
 
 
 # WeightedLayerPooling: Use Intermediate Layer's Embedding
@@ -112,14 +112,23 @@ class SubSequenceGEMPooling(nn.Module):
         super(SubSequenceGEMPooling, self).__init__()
 
     @staticmethod
-    def forward(last_hidden_state, p: int = 4) -> Tensor:
+    def forward(last_hidden_state, p: float = 1) -> Tensor:
         """
         last_hidden_state.size: [1, cell_sequence, hidden_size]
         1) Pow last_hidden_state with p and then take a averaging
         2) pow sum_embeddings with 1/p
         """
-        sum_embeddings = torch.mean(zero_filtering(torch.pow(last_hidden_state, p)), 1)
-        gem_embeddings = zero_filtering(torch.pow(sum_embeddings, 1 / p))
+        p_embeddings = zero_filtering(torch.pow(last_hidden_state, p))
+        # Check NaN value in Embedding after applying torch.pow
+        if check_nan(p_embeddings):
+            p_embeddings = nan_filtering(p_embeddings)
+
+        sum_embeddings = torch.mean(p_embeddings, dim=1)
+        gem_embeddings = zero_filtering(torch.pow(sum_embeddings, 1. / p))
+
+        # Check NaN value in Embedding after applying torch.pow
+        if check_nan(gem_embeddings):
+            gem_embeddings = nan_filtering(gem_embeddings)
         return gem_embeddings
 
 
