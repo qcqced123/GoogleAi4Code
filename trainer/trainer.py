@@ -35,7 +35,6 @@ class DictWiseTrainer:
 
     def make_batch(self, fold: int) -> tuple[torch.utils.data.DataLoader, torch.utils.data.DataLoader, pd.DataFrame]:
         """ Make Batch Dataset for main train loop """
-        self.df = self.df.iloc[0:100, :]
         train = self.df[self.df['fold'] != fold].reset_index(drop=True)
         valid = self.df[self.df['fold'] == fold].reset_index(drop=True)
 
@@ -160,11 +159,9 @@ class DictWiseTrainer:
                 #         ranks.tolist()[feature_idx]
                 #     )  # calculate metric per instance
                 # val_metric = val_metrics(cell_features, ranks)
-                metrics.update(val_metric.detach(), val_batch_size)
-
-        metric = metrics.avg.detach().cpu().numpy()
+                metrics.update(val_metric, val_batch_size)
         gc.collect()
-        return metric
+        return metrics.avg
 
 
 class PairwiseTrainer:
@@ -306,7 +303,6 @@ class PairwiseTrainer:
                     prompt[k] = v.to(self.cfg.device)  # prompt to GPU
                 val_batch_size = prompt.shape[0]
                 ranks = ranks.squeeze(dim=0).to(self.cfg.device)
-
                 cell_features = model(prompt, all_position)
                 for feature_idx in range(val_batch_size):
                     val_metric = val_metric + val_metrics(

@@ -47,7 +47,7 @@ def train_loop(cfg: any) -> None:
                 print(f'[Update] Valid Score : ({val_score_max:.4f} => {valid_metric:.4f}) Save Parameter')
                 print(f'Best Score: {valid_metric}')
                 torch.save(model.state_dict(),
-                           f'{cfg.checkpoint_dir}fold{fold}_{cfg.image_pooling}_{get_name(cfg)}_state_dict.pth')
+                           f'{cfg.checkpoint_dir}fold{fold}_{get_name(cfg)}_state_dict.pth')
                 val_score_max = valid_metric
 
             # Check if Trainer need to Early Stop

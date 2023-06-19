@@ -164,11 +164,14 @@ class KendallTau(nn.Module):
             ground_truth: list of ground truth, labels
             predictions: list of predictions from model
         """
-        total_inversions = 0
-        total_2max = 0  # twice the maximum possible inversions across all instances
+        total_inversions, total_2max = 0, 0
         for gt, pred in zip(ground_truth, predictions):
-            print(pred)
-            ranks = [gt.index(math.ceil(x)) for x in pred]  # rank predicted order in terms of ground truth
+            ranks = []
+            for x in pred:
+                if x >= 0:
+                    ranks.append(x)
+                else:
+                    ranks.append(0)
             total_inversions += self.count_inversions(ranks)
             n = len(gt)
             total_2max += n * (n - 1)
