@@ -19,5 +19,5 @@ def main(config_path: str, cfg) -> None:
 
 
 if __name__ == '__main__':
-    main('dictionarywise_trainer.json', CFG)
-    # main('pairwise_trainer.json', CFG)
+    # main('dictionarywise_trainer.json', CFG)
+    main('pairwise_trainer.json', CFG)

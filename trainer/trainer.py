@@ -266,7 +266,7 @@ class PairwiseTrainer:
 
                 for feature_idx in range(batch_size):
                     for rank_idx in range(len(pair_rank_list[feature_idx])):
-                        loss += criterion(
+                        loss = loss + criterion(
                             cell_features[pair_rank_list[feature_idx][rank_idx][0]].squeeze(dim=0),
                             cell_features[pair_rank_list[feature_idx][rank_idx][1]].squeeze(dim=0),
                             pair_target_list[feature_idx][rank_idx].unsqueeze(dim=0)

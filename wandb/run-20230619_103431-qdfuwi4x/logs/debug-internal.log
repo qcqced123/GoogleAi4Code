@@ -606,3 +606,465 @@
 2023-06-19 10:45:39,096 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
 2023-06-19 10:45:40,970 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
 2023-06-19 10:45:42,970 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:44,180 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:45:44,971 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:46,972 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:48,972 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:49,547 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:45:50,973 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:52,234 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:45:52,234 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:45:52,973 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:54,757 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:45:54,974 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:56,974 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:45:58,975 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:00,491 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:00,975 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:01,892 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:46:02,976 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:04,976 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:05,686 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:06,977 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:07,233 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:46:07,234 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:46:08,977 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:10,978 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:11,143 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:12,978 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:14,979 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:16,480 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:16,979 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:18,980 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:20,980 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:21,854 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:22,233 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:46:22,234 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:46:22,981 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:24,981 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:26,982 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:27,037 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:28,982 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:30,983 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:31,893 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:46:32,168 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:32,983 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:34,984 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:36,984 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:37,191 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:37,233 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:46:37,234 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:46:38,985 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:40,985 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:42,544 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:42,985 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:44,986 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:46,986 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:48,205 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:48,987 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:50,988 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:52,241 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:46:52,242 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:46:52,988 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:53,911 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:46:54,988 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:56,989 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:58,989 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:46:59,205 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:00,990 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:01,893 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:47:02,990 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:04,338 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:04,991 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:06,991 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:07,245 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:47:07,245 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:47:08,992 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:09,512 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:10,992 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:12,993 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:14,993 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:15,118 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:16,994 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:18,994 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:20,504 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:20,995 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:22,245 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:47:22,245 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:47:22,995 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:24,996 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:25,586 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:26,996 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:28,996 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:30,793 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:30,997 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:31,894 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:47:32,997 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:34,998 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:36,030 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:36,998 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:37,276 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:47:37,277 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:47:38,999 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:40,999 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:41,378 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:42,999 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:45,000 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:46,577 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:47,000 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:49,001 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:51,001 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:52,374 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:52,374 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:47:52,375 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:47:53,002 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:55,002 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:57,002 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:47:57,672 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:47:59,003 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:01,003 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:01,894 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:48:03,004 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:03,212 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:05,004 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:07,005 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:07,374 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:48:07,374 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:48:08,582 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:09,005 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:11,006 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:13,006 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:14,113 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:15,006 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:17,007 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:19,007 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:19,486 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:21,008 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:22,374 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:48:22,374 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:48:23,008 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:24,964 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:25,009 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:27,009 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:29,010 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:30,552 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:31,010 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:31,894 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:48:33,010 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:35,011 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:36,534 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:37,011 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:37,375 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:48:37,375 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:48:39,012 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:41,012 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:42,124 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:43,013 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:45,013 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:47,013 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:47,772 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:49,014 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:51,014 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:52,375 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:48:52,375 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:48:53,015 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:53,118 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:55,015 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:57,016 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:48:58,493 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:48:59,016 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:01,016 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:01,895 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:49:03,017 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:03,783 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:05,017 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:07,018 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:07,375 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:49:07,375 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:49:08,907 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:09,019 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:11,019 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:13,020 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:14,004 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:15,020 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:17,020 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:19,021 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:19,053 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:21,021 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:22,496 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:49:22,497 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:49:23,022 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:24,279 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:25,022 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:27,022 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:29,023 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:29,356 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:31,023 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:31,895 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:49:33,024 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:34,756 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:35,024 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:37,025 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:37,526 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:49:37,526 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:49:39,025 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:40,097 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:41,026 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:43,026 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:45,027 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:46,093 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:47,027 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:49,028 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:51,028 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:51,396 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:52,526 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:49:52,526 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:49:53,029 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:55,029 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:56,842 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:49:57,030 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:49:59,030 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:01,031 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:01,896 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:50:01,896 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:03,031 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:05,031 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:07,032 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:07,526 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:50:07,526 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:50:07,526 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:09,032 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:11,033 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:12,777 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:13,033 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:15,034 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:17,034 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:18,284 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:19,034 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:21,035 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:22,526 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:50:22,526 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:50:23,035 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:23,415 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:25,036 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:27,036 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:29,036 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:29,045 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:31,037 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:31,897 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:50:33,037 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:34,299 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:35,038 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:37,038 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:37,596 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:50:37,596 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:50:39,039 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:39,628 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:41,039 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:43,040 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:44,901 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:45,040 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:47,041 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:49,041 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:50,869 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:51,041 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:52,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:50:52,595 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:50:53,042 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:55,042 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:56,033 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:50:57,043 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:50:59,043 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:01,044 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:01,079 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:01,897 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:51:03,044 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:05,045 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:06,299 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:07,045 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:07,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:51:07,595 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:51:09,045 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:11,046 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:11,586 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:13,046 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:15,047 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:16,942 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:17,047 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:19,048 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:21,048 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:22,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:51:22,595 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:51:22,792 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:23,049 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:25,049 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:27,049 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:28,046 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:29,050 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:31,050 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:31,897 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:51:33,051 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:33,600 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:35,052 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:37,052 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:37,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:51:37,595 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:51:39,053 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:39,377 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:41,053 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:43,054 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:44,907 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:45,054 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:47,054 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:49,055 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:50,020 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:51,055 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:52,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:51:52,596 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:51:53,056 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:55,056 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:55,551 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:51:57,057 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:51:59,057 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:01,058 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:01,125 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:52:01,898 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:52:03,058 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:05,059 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:07,007 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:52:07,059 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:07,595 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-19 10:52:07,595 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: stop_status
+2023-06-19 10:52:08,652 DEBUG   SenderThread:26317 [sender.py:send():375] send: exit
+2023-06-19 10:52:08,652 INFO    SenderThread:26317 [sender.py:send_exit():598] handling exit code: 1
+2023-06-19 10:52:08,652 INFO    SenderThread:26317 [sender.py:send_exit():600] handling runtime: 1056
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:send_exit():606] send defer
+2023-06-19 10:52:08,653 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,653 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-19 10:52:08,653 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 1
+2023-06-19 10:52:08,653 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,653 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-19 10:52:08,653 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-06-19 10:52:08,653 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 2
+2023-06-19 10:52:08,653 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,653 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-19 10:52:08,653 INFO    HandlerThread:26317 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-19 10:52:08,654 INFO    HandlerThread:26317 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-19 10:52:08,654 INFO    HandlerThread:26317 [interfaces.py:finish():202] Joined disk monitor
+2023-06-19 10:52:08,654 DEBUG   SystemMonitor:26317 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-19 10:52:08,654 DEBUG   SystemMonitor:26317 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-19 10:52:08,671 INFO    HandlerThread:26317 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-19 10:52:08,671 INFO    HandlerThread:26317 [interfaces.py:finish():202] Joined memory monitor
+2023-06-19 10:52:08,671 INFO    HandlerThread:26317 [interfaces.py:finish():202] Joined network monitor
+2023-06-19 10:52:08,672 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 3
+2023-06-19 10:52:08,672 DEBUG   SenderThread:26317 [sender.py:send():375] send: stats
+2023-06-19 10:52:08,672 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,672 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-19 10:52:08,672 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 4
+2023-06-19 10:52:08,672 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,672 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-19 10:52:08,672 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-06-19 10:52:08,672 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 5
+2023-06-19 10:52:08,672 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,672 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-19 10:52:08,673 DEBUG   SenderThread:26317 [sender.py:send():375] send: summary
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-19 10:52:08,673 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 6
+2023-06-19 10:52:08,673 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,673 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-19 10:52:08,673 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 7
+2023-06-19 10:52:08,673 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:52:08,673 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:08,673 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-19 10:52:08,673 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:08,673 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-06-19 10:52:09,060 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:09,061 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/wandb-summary.json
+2023-06-19 10:52:09,653 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-19 10:52:11,030 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 8
+2023-06-19 10:52:11,030 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: poll_exit
+2023-06-19 10:52:11,030 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:11,030 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-19 10:52:11,030 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:11,030 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-06-19 10:52:11,034 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 9
+2023-06-19 10:52:11,035 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:11,035 DEBUG   SenderThread:26317 [sender.py:send():375] send: artifact
+2023-06-19 10:52:11,035 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-19 10:52:11,061 INFO    Thread-12 :26317 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:14,655 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-19 10:52:17,372 INFO    SenderThread:26317 [sender.py:send_artifact():1474] sent artifact job-https___github.com_qcqced123_GoogleAi4Code.git_train.py - {'id': 'QXJ0aWZhY3Q6NDkxODM5MjQ3', 'digest': 'cafce807c93e5423eea199334d4a4d8a', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_qcqced123_GoogleAi4Code.git_train.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_qcqced123_GoogleAi4Code.git_train.py', 'alias': 'v0'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc3NzE3OTU5', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDkxODUzODc1', 'versionIndex': 1}}, 'version': 'v0'}
+2023-06-19 10:52:17,373 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:17,373 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-06-19 10:52:17,373 INFO    SenderThread:26317 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-06-19 10:52:17,373 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: status_report
+2023-06-19 10:52:18,064 INFO    SenderThread:26317 [dir_watcher.py:finish():395] scan: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files
+2023-06-19 10:52:18,064 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log output.log
+2023-06-19 10:52:18,064 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/config.yaml config.yaml
+2023-06-19 10:52:18,064 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/wandb-metadata.json wandb-metadata.json
+2023-06-19 10:52:18,064 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/requirements.txt requirements.txt
+2023-06-19 10:52:18,065 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/conda-environment.yaml conda-environment.yaml
+2023-06-19 10:52:18,067 INFO    SenderThread:26317 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/wandb-summary.json wandb-summary.json
+2023-06-19 10:52:18,067 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 10
+2023-06-19 10:52:18,068 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:18,068 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-19 10:52:18,070 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:18,070 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-06-19 10:52:18,070 INFO    SenderThread:26317 [file_pusher.py:finish():167] shutting down file pusher
+2023-06-19 10:52:18,686 INFO    wandb-upload_0:26317 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/output.log
+2023-06-19 10:52:18,700 INFO    wandb-upload_4:26317 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/wandb-summary.json
+2023-06-19 10:52:18,710 INFO    wandb-upload_1:26317 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/config.yaml
+2023-06-19 10:52:18,747 INFO    wandb-upload_3:26317 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/conda-environment.yaml
+2023-06-19 10:52:18,791 INFO    wandb-upload_2:26317 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/files/requirements.txt
+2023-06-19 10:52:18,991 INFO    Thread-11 :26317 [sender.py:transition_state():626] send defer: 11
+2023-06-19 10:52:18,992 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:18,992 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 11
+2023-06-19 10:52:18,992 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:18,992 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-06-19 10:52:18,992 INFO    SenderThread:26317 [file_pusher.py:join():172] waiting for file pusher
+2023-06-19 10:52:18,992 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 12
+2023-06-19 10:52:18,992 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:18,992 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 12
+2023-06-19 10:52:18,993 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:18,993 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-06-19 10:52:19,657 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: keepalive
+2023-06-19 10:52:19,935 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 13
+2023-06-19 10:52:19,935 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:19,935 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 13
+2023-06-19 10:52:19,935 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:19,935 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-06-19 10:52:19,935 INFO    SenderThread:26317 [sender.py:transition_state():626] send defer: 14
+2023-06-19 10:52:19,935 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: defer
+2023-06-19 10:52:19,935 INFO    HandlerThread:26317 [handler.py:handle_request_defer():170] handle defer: 14
+2023-06-19 10:52:19,936 DEBUG   SenderThread:26317 [sender.py:send():375] send: final
+2023-06-19 10:52:19,936 DEBUG   SenderThread:26317 [sender.py:send():375] send: footer
+2023-06-19 10:52:19,936 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: defer
+2023-06-19 10:52:19,936 INFO    SenderThread:26317 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-06-19 10:52:19,936 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-19 10:52:19,936 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: poll_exit
+2023-06-19 10:52:19,936 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: server_info
+2023-06-19 10:52:19,937 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: get_summary
+2023-06-19 10:52:19,937 DEBUG   SenderThread:26317 [sender.py:send_request():402] send_request: server_info
+2023-06-19 10:52:19,938 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: sampled_history
+2023-06-19 10:52:20,152 INFO    MainThread:26317 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-06-19 10:52:20,152 INFO    MainThread:26317 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-06-19 10:52:20,152 INFO    MainThread:26317 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2023-06-19 10:52:20,153 DEBUG   HandlerThread:26317 [handler.py:handle_request():144] handle_request: shutdown
+2023-06-19 10:52:20,153 INFO    HandlerThread:26317 [handler.py:finish():845] shutting down handler
+2023-06-19 10:52:20,937 INFO    WriterThread:26317 [datastore.py:close():298] close: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230619_103431-qdfuwi4x/run-qdfuwi4x.wandb
+2023-06-19 10:52:21,152 INFO    SenderThread:26317 [sender.py:finish():1550] shutting down sender
+2023-06-19 10:52:21,153 INFO    SenderThread:26317 [file_pusher.py:finish():167] shutting down file pusher
+2023-06-19 10:52:21,153 INFO    SenderThread:26317 [file_pusher.py:join():172] waiting for file pusher

@@ -101,6 +101,11 @@ class PairwiseModel(nn.Module):
     """
     Model class for pair-wise(Margin Ranking), dict-wise(Multiple Negative Ranking) pipeline with DeBERTa-V3-Large
     Apply Pooling & Fully Connected Layer for each unique cell in one notebook_id
+
+    For this Modeling Strategy, we use subsequent tokens for calculating embedding last_hidden_state,
+    So when we forward last_hidden_state, we don't need to use mask for padding tokens
+    Thus, if you want to apply mean pooling, you can easily implement it by using torch.mean() function
+
     Args:
         cfg: configuration.CFG
     Reference:

@@ -38,7 +38,7 @@
     },
     "loss_options": {
         "loss_fn": "MarginRankingLoss",
-        "margin": 1,
+        "margin": 0.5,
         "reduction": "mean"
     },
     "metrics_options": {

@@ -25,3 +25,4 @@ config: {'amp_scaler': True, 'anneal_epochs': 1, 'anneal_strategy': 'cos', 'awp'
 2023-06-19 10:34:36,722 INFO    MainThread:26283 [wandb_run.py:_redirect():2078] Wrapping output streams.
 2023-06-19 10:34:36,722 INFO    MainThread:26283 [wandb_run.py:_redirect():2103] Redirects installed.
 2023-06-19 10:34:36,722 INFO    MainThread:26283 [wandb_init.py:init():829] run started, returning control to user process
+2023-06-19 10:52:21,281 WARNING MsgRouterThr:26283 [router.py:message_loop():77] message_loop has been closed
