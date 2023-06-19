@@ -130,9 +130,9 @@ class DictWiseTrainer:
                     model.parameters(),
                     self.cfg.max_grad_norm * self.cfg.n_gradient_accumulation_steps
                 )
-                scaler.step(optimizer)
-                scaler.update()
-                lr_scheduler.step()
+            scaler.step(optimizer)
+            scaler.update()
+            lr_scheduler.step()
 
             gc.collect()
 
@@ -286,10 +286,9 @@ class PairwiseTrainer:
                     model.parameters(),
                     self.cfg.max_grad_norm * self.cfg.n_gradient_accumulation_steps
                 )
-                scaler.step(optimizer)
-                scaler.update()
-                lr_scheduler.step()
-
+            scaler.step(optimizer)
+            scaler.update()
+            lr_scheduler.step()
             gc.collect()
 
         train_loss = losses.avg.detach().cpu().numpy()
@@ -316,7 +315,6 @@ class PairwiseTrainer:
                     )  # calculate metric per instance
                 # val_metric = val_metrics(cell_features, ranks)
                 metrics.update(val_metric.detach(), val_batch_size)
-
         metric = metrics.avg.detach().cpu().numpy()
         gc.collect()
         return metric

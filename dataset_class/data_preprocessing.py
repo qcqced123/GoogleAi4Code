@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import torch
 import configuration as configuration
-from torch import Tensor
 from bs4 import BeautifulSoup
 from sklearn.model_selection import KFold, GroupKFold
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
@@ -126,7 +125,7 @@ def subsequent_tokenizing(cfg: configuration.CFG, text: str) -> any:
     """
     inputs = cfg.tokenizer.encode_plus(
         text,
-        max_length=128,
+        max_length=64,
         padding=False,
         truncation=True,
         return_tensors=None,
