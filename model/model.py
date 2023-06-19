@@ -5,7 +5,7 @@ from torch import Tensor
 from transformers import AutoConfig, AutoModel
 
 import configuration
-from model.model_utils import freeze, reinit_topk
+from model.model_utils import freeze, reinit_topk, check_nan, nan_filtering
 
 
 class DictionaryWiseModel(nn.Module):
@@ -184,7 +184,12 @@ class PairwiseModel(nn.Module):
         for i in range(self.cfg.batch_size):
             for idx in range(len(position_list[i])):
                 src, end = position_list[i][idx]
-                embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # check right index
+                # embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # check right index
+                subsequent = feature[i, src:end + 1, :].unsqueeze(dim=0)
+                if check_nan(subsequent):
+                    subsequent = nan_filtering(subsequent)
+                embedding = torch.mean(subsequent, dim=1)  # check right index
                 logit = self.fc(embedding)
                 pred.append(logit)
+
         return pred
