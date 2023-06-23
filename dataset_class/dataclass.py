@@ -76,7 +76,7 @@ class DictionaryWiseDataset(Dataset):
 
         prompt = md_prompt + cd_prompt + self.cfg.tokenizer.sep_token
         prompt = self.tokenizer(self.cfg, prompt)  # need to update with dynamic padding, and then make target mask
-        ranks = torch.tensor(md_rank + cd_rank)
+        ranks = torch.tensor(md_rank + cd_rank, dtype=torch.float32)
 
         # 4) Make each unique cell's position list (all_position)
         md_position, cd_position = [], []

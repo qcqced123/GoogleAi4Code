@@ -35,6 +35,7 @@ class DictWiseTrainer:
 
     def make_batch(self, fold: int) -> tuple[torch.utils.data.DataLoader, torch.utils.data.DataLoader, pd.DataFrame]:
         """ Make Batch Dataset for main train loop """
+        self.df = self.df.iloc[0:1000, :]
         train = self.df[self.df['fold'] != fold].reset_index(drop=True)
         valid = self.df[self.df['fold'] == fold].reset_index(drop=True)
 
@@ -107,11 +108,13 @@ class DictWiseTrainer:
             for k, v in prompt.items():
                 prompt[k] = v.to(self.cfg.device)  # prompt to GPU
 
-            ranks = ranks.squeeze(dim=0).to(self.cfg.device)
+            # ranks = ranks.squeeze(dim=0).to(self.cfg.device)
+            ranks = ranks.T.to(self.cfg.device)
             batch_size = self.cfg.batch_size
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)
-            loss = criterion(cell_features, cell_features, ranks)
+            # loss = criterion(cell_features, cell_features, ranks)
+            loss = criterion(cell_features, ranks)
 
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps

@@ -169,9 +169,9 @@ class KendallTau(nn.Module):
             ranks = []
             for x in pred:
                 if x >= 0:
-                    ranks.append(x)
+                    ranks.append(gt.index(round(x)))
                 else:
-                    ranks.append(0)
+                    ranks.append(gt.index(0))
             total_inversions += self.count_inversions(ranks)
             n = len(gt)
             total_2max += n * (n - 1)

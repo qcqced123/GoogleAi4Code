@@ -125,7 +125,7 @@ def subsequent_tokenizing(cfg: configuration.CFG, text: str) -> any:
     """
     inputs = cfg.tokenizer.encode_plus(
         text,
-        max_length=32,
+        max_length=64,
         padding=False,
         truncation=True,
         return_tensors=None,

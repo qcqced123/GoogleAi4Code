@@ -69,16 +69,22 @@ class MultipleNegativeRankingLoss(nn.Module):
         self.reduction = reduction
         self.cross_entropy_loss = CrossEntropyLoss(self.reduction)
 
-    def forward(self, embeddings_a: Tensor, embeddings_b: Tensor, labels: Tensor) -> Tensor:
+    def forward(self, embeddings_a: Tensor, embeddings_b: Tensor, labels: Tensor = None) -> Tensor:
         """
         This Multiple Negative Ranking Loss (MNRL) is used for same embedding list,
         Args:
             embeddings_a: embeddings of shape for mini-batch
-            embeddings_b: same as embedding_a, but start at index 1
-            labels: labels of mini-batch instance from competition dataset (rank), must be on same device with embedding
+            embeddings_b: labels of mini-batch instance from competition dataset (rank), must be on same device with embedding
+            labels:
         """
         similarity_scores = zero_filtering(self.similarity_fct(embeddings_a, embeddings_b)) * self.scale
         if check_nan(similarity_scores):
             """ Check NaN Value in similarity_scores """
             similarity_scores = nan_filtering(similarity_scores)
+        labels = torch.tensor(
+            range(len(similarity_scores)),
+            dtype=torch.long,
+            device=similarity_scores.device,
+        )
+        # labels = embeddings_a.T.type(torch.long).to(similarity_scores.device)
         return self.cross_entropy_loss(similarity_scores, labels)
