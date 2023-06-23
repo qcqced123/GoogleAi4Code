@@ -30,7 +30,7 @@
         "val_batch_size": 1
     },
     "gradient_settings": {
-        "amp_scaler":  false,
+        "amp_scaler":  true,
         "gradient_checkpoint": true,
         "clipping_grad": true,
         "n_gradient_accumulation_steps": 1,
@@ -47,7 +47,7 @@
     "optimizer_options": {
         "optimizer": "AdamW",
         "llrd": true,
-        "layerwise_lr": 5e-6,
+        "layerwise_lr": 5e-5,
         "layerwise_lr_decay": 0.9,
         "layerwise_weight_decay": 1e-2,
         "layerwise_adam_epsilon": 1e-6,
