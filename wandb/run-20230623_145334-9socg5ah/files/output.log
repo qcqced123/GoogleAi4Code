@@ -1,0 +1,35 @@
+Some weights of the model checkpoint at microsoft/deberta-v3-large were not used when initializing DebertaV2Model: ['mask_predictions.LayerNorm.weight', 'mask_predictions.dense.weight', 'mask_predictions.classifier.bias', 'lm_predictions.lm_head.bias', 'mask_predictions.classifier.weight', 'mask_predictions.dense.bias', 'lm_predictions.lm_head.dense.weight', 'lm_predictions.lm_head.LayerNorm.bias', 'lm_predictions.lm_head.LayerNorm.weight', 'lm_predictions.lm_head.dense.bias', 'mask_predictions.LayerNorm.bias']
+- This IS expected if you are initializing DebertaV2Model from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaV2Model from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  0%|                                                                                                            | 0/111421 [00:00<?, ?it/s]
+Traceback (most recent call last):                                                                               | 0/111421 [00:00<?, ?it/s]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 23, in <module>
+    main('pairwise_trainer.json', CFG)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 18, in main
+    getattr(train_loop, cfg.loop)(cfg)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/train_loop.py", line 34, in train_loop
+    train_loss = train_input.train_fn(
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/trainer.py", line 258, in train_fn
+    for step, (prompt, _, all_position, pair_rank_list, pair_target_list) in enumerate(tqdm(loader_train)):  # Maybe need to append
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/tqdm/std.py", line 1195, in __iter__
+    for obj in iterable:
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1345, in _next_data
+    return self._process_data(data)
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 1371, in _process_data
+    data.reraise()
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/_utils.py", line 644, in reraise
+    raise exception
+IndexError: Caught IndexError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/_utils/worker.py", line 308, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/dataset_class/dataclass.py", line 242, in __getitem__
+    print(f'real prompt length: {prompt["attention_mask"].sum(axis=1)}')
+IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)
+[1/5] Train & Validation

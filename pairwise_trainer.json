@@ -34,12 +34,12 @@
         "gradient_checkpoint": true,
         "clipping_grad": true,
         "n_gradient_accumulation_steps": 1,
-        "max_grad_norm": 1000
+        "max_grad_norm": 10
     },
     "loss_options": {
         "loss_fn": "MarginRankingLoss",
         "margin": 0.5,
-        "reduction": "mean"
+        "reduction": "none"
     },
     "metrics_options": {
         "metrics": "KendallTau"
@@ -47,7 +47,7 @@
     "optimizer_options": {
         "optimizer": "AdamW",
         "llrd": true,
-        "layerwise_lr": 5e-5,
+        "layerwise_lr": 3e-4,
         "layerwise_lr_decay": 0.9,
         "layerwise_weight_decay": 1e-2,
         "layerwise_adam_epsilon": 1e-6,

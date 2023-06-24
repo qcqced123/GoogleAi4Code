@@ -3,6 +3,7 @@ import model.metric as model_metric
 import model.metric_learning as metric_learning
 import model.loss as loss_fn
 import model.model as model_arch
+import torch.nn as nn
 from torch.utils.data import DataLoader
 from dataset_class.data_preprocessing import *
 from utils.helper import *
@@ -253,7 +254,7 @@ class PairwiseTrainer:
         """ Pairwise Training Function """
         torch.autograd.set_detect_anomaly(True)
         scaler = torch.cuda.amp.GradScaler(enabled=self.cfg.amp_scaler)
-        loss, losses = 0, AverageMeter()
+        losses = AverageMeter()
         model.train()
         for step, (prompt, _, all_position, pair_rank_list, pair_target_list) in enumerate(tqdm(loader_train)):  # Maybe need to append
             optimizer.zero_grad()
@@ -266,18 +267,18 @@ class PairwiseTrainer:
 
             with torch.cuda.amp.autocast(enabled=self.cfg.amp_scaler):
                 cell_features = model(prompt, all_position)  # cell_features.shape: [batch_size, num_cell]
-
                 for feature_idx in range(batch_size):
+                    rank_loss = 0
                     for rank_idx in range(len(pair_rank_list[feature_idx])):
-                        loss = loss + criterion(
+                        rank_loss += nn.MarginRankingLoss(self.cfg.margin, reduction='none')(
                             cell_features[pair_rank_list[feature_idx][rank_idx][0]].squeeze(dim=0),
                             cell_features[pair_rank_list[feature_idx][rank_idx][1]].squeeze(dim=0),
                             pair_target_list[feature_idx][rank_idx].unsqueeze(dim=0)
                         )
+                loss = rank_loss / len(pair_rank_list[feature_idx])
             if self.cfg.n_gradient_accumulation_steps > 1:
                 loss = loss / self.cfg.n_gradient_accumulation_steps
-
-            scaler.scale(loss).backward(retain_graph=True)
+            scaler.scale(loss).backward()
             losses.update(loss.detach(), batch_size)
 
             if self.cfg.clipping_grad and (step + 1) % self.cfg.n_gradient_accumulation_steps == 0 or self.cfg.n_gradient_accumulation_steps == 1:

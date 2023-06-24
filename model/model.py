@@ -180,6 +180,7 @@ class PairwiseModel(nn.Module):
         """
         outputs = self.feature(inputs)
         feature = outputs.last_hidden_state
+        print(feature.shape)
         pred = []
         for i in range(self.cfg.batch_size):
             for idx in range(len(position_list[i])):
@@ -187,9 +188,10 @@ class PairwiseModel(nn.Module):
                 # embedding = self.pooling(feature[i, src:end + 1, :].unsqueeze(dim=0))  # check right index
                 subsequent = feature[i, src:end + 1, :].unsqueeze(dim=0)
                 if check_nan(subsequent):
+                    print('warning nan')
                     subsequent = nan_filtering(subsequent)
                 embedding = torch.mean(subsequent, dim=1)  # check right index
                 logit = self.fc(embedding)
                 pred.append(logit)
-
+        print(pred)
         return pred

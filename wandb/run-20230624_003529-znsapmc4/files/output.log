@@ -1,0 +1,157 @@
+Some weights of the model checkpoint at microsoft/deberta-v3-large were not used when initializing DebertaV2Model: ['lm_predictions.lm_head.LayerNorm.bias', 'mask_predictions.LayerNorm.weight', 'lm_predictions.lm_head.dense.weight', 'lm_predictions.lm_head.bias', 'lm_predictions.lm_head.dense.bias', 'lm_predictions.lm_head.LayerNorm.weight', 'mask_predictions.classifier.bias', 'mask_predictions.LayerNorm.bias', 'mask_predictions.dense.bias', 'mask_predictions.dense.weight', 'mask_predictions.classifier.weight']
+- This IS expected if you are initializing DebertaV2Model from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaV2Model from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  0%|                                                                                                            | 0/111421 [00:00<?, ?it/s]
+[1/5] Train & Validation
+torch.Size([1, 471, 1024])
+[tensor([[-1.7979]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.8848]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.3350]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.1807]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.5615]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7910]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-2.0605]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.1689]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.6709]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7881]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-0.9146]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.2354]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.4785]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.6201]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.4199]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7109]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.1816]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.3721]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.1494]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.3730]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.4434]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.6387]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7637]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.3018]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.5947]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7148]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.2959]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.2080]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.4482]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.7959]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.6963]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-1.4531]], device='cuda:0', dtype=torch.float16,
+Traceback (most recent call last):                                                                               | 0/111421 [00:00<?, ?it/s]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 23, in <module>
+    main('pairwise_trainer.json', CFG)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 18, in main
+    getattr(train_loop, cfg.loop)(cfg)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/train_loop.py", line 34, in train_loop
+    train_loss = train_input.train_fn(
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/trainer.py", line 284, in train_fn
+    scaler.scale(loss).backward()
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Function 'ToCopyBackward0' returned nan values in its 0th output.
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+                                                   Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+                                               cudaFree        65.44%     740.069ms        65.44%     740.069ms     370.034ms             2
+                                         aten::_to_copy         4.08%      46.143ms         5.79%      65.431ms      35.406us          1848
+                                          aten::squeeze         2.84%      32.064ms         2.84%      32.099ms      30.835us          1041
+                                              aten::mul         2.24%      25.280ms         2.44%      27.544ms      39.292us           701
+                                              aten::add         2.23%      25.193ms         2.41%      27.215ms      40.378us           674
+                                              aten::sub         2.18%      24.654ms         2.47%      27.883ms      46.941us           594
+                                       cudaLaunchKernel         2.04%      23.019ms         2.04%      23.019ms       3.375us          6820
+                                       aten::clamp_min_         1.91%      21.613ms         4.16%      47.089ms      94.938us           496
+                                        cudaMemcpyAsync         1.63%      18.401ms         1.63%      18.401ms       9.456us          1946
+                                             aten::add_         1.63%      18.378ms         1.77%      19.979ms      38.495us           519
+                                            aten::clone         1.62%      18.329ms         2.44%      27.626ms      36.302us           761
+                                     CheckpointFunction         1.26%      14.209ms        72.41%     818.858ms      34.119ms            24
+                                            aten::addmm         1.21%      13.728ms        66.82%     755.596ms       3.373ms           224
+                                               XDropout         1.16%      13.084ms         2.25%      25.410ms     261.959us            97
+                                            aten::copy_         0.93%      10.521ms         1.91%      21.585ms       8.124us          2657
+                                               aten::to         0.92%      10.414ms         5.88%      66.489ms      31.571us          2106
+                                    aten::empty_strided         0.66%       7.499ms         0.82%       9.242ms       3.785us          2442
+                                              aten::log         0.46%       5.245ms         0.46%       5.252ms       1.751ms             3
+                                           aten::select         0.45%       5.134ms         0.46%       5.179ms       1.216us          4259
+                                             cudaMalloc         0.33%       3.741ms         0.33%       3.741ms      63.407us            59
+                                             aten::item         0.27%       3.090ms         1.45%      16.398ms      12.892us          1272
+                                              aten::bmm         0.26%       2.935ms         0.40%       4.545ms      36.951us           123
+                              aten::_local_scalar_dense         0.24%       2.691ms         1.39%      15.670ms      12.319us          1272
+                                               XSoftmax         0.24%       2.678ms         0.49%       5.532ms     230.500us            24
+                                              aten::neg         0.23%       2.648ms         0.33%       3.781ms       7.271us           520
+                                            aten::slice         0.23%       2.556ms         0.26%       2.921ms      31.409us            93
+                                        aten::embedding         0.22%       2.451ms         0.45%       5.093ms       5.093ms             1
+                                             aten::mean         0.20%       2.275ms         0.21%       2.415ms      75.469us            32
+                                aten::native_layer_norm         0.20%       2.256ms         0.24%       2.722ms      54.440us            50
+                                                aten::t         0.16%       1.825ms         0.18%       2.087ms       8.152us           256
+                                            aten::empty         0.15%       1.746ms         0.17%       1.957ms       2.129us           919
+                                        aten::unsqueeze         0.15%       1.673ms         0.15%       1.675ms       2.873us           583
+                                           aten::linear         0.14%       1.567ms       134.91%        1.526s       3.405ms           448
+                                     aten::index_select         0.12%       1.348ms         0.21%       2.391ms       2.391ms             1
+                                              aten::div         0.12%       1.334ms         0.15%       1.693ms      15.822us           107
+                                          aten::nonzero         0.12%       1.324ms         0.33%       3.726ms     116.438us            32
+                                       aten::bernoulli_         0.11%       1.232ms         0.15%       1.727ms      17.804us            97
+                                               aten::ne         0.11%       1.202ms         0.14%       1.574ms      12.297us           128
+                                  cudaStreamSynchronize         0.09%       1.039ms         0.09%       1.039ms       0.832us          1249
+                                      aten::bitwise_and         0.09%       1.036ms         0.10%       1.111ms      33.667us            33
+                                     aten::masked_fill_         0.08%     916.000us         0.11%       1.283ms       8.848us           145
+                                              aten::any         0.08%     907.000us         0.09%     993.000us      31.031us            32
+                                          cudaHostAlloc         0.08%     893.000us         0.08%     897.000us      14.705us            61
+                                           aten::gather         0.08%     874.000us         0.09%       1.030ms      21.458us            48
+                                    aten::masked_select         0.07%     776.000us         0.42%       4.738ms     148.062us            32
+                                               aten::lt         0.07%     739.000us         0.08%     940.000us      28.485us            33
+                                      aten::masked_fill         0.06%     711.000us         0.32%       3.569ms      29.496us           121
+                                       aten::layer_norm         0.06%     631.000us         0.30%       3.392ms      61.673us            55
+                                           aten::repeat         0.05%     516.000us         0.10%       1.148ms      23.917us            48
+                                               aten::gt         0.05%     510.000us         0.06%     664.000us      10.215us            65
+                                            aten::clamp         0.04%     508.000us         0.05%     620.000us      12.917us            48
+                                             aten::gelu         0.04%     502.000us         0.05%     579.000us      24.125us            24
+                                             aten::ceil         0.04%     493.000us         0.05%     598.000us      18.121us            33
+                                      aten::bitwise_not         0.04%     489.000us         0.05%     546.000us      22.750us            24
+                                              aten::abs         0.04%     481.000us         0.13%       1.433ms      11.023us           130
+                                         aten::_softmax         0.04%     474.000us         0.05%     544.000us      22.667us            24
+                                       aten::as_strided         0.04%     466.000us         0.04%     466.000us       0.065us          7144
+                                        aten::transpose         0.04%     436.000us         0.04%     439.000us       1.247us           352
+                                       aten::empty_like         0.04%     420.000us         0.28%       3.146ms       8.667us           363
+                                              aten::min         0.04%     418.000us         0.05%     553.000us      17.281us            32
+                                       aten::contiguous         0.03%     384.000us         0.18%       2.062ms      14.319us           144
+                                               aten::eq         0.03%     384.000us         0.05%     533.000us       8.328us            64
+                                             aten::sign         0.03%     374.000us         0.03%     383.000us     383.000us             1
+                                            aten::where         0.03%     349.000us         0.03%     374.000us     187.000us             2
+                                             aten::sqrt         0.03%     332.000us         0.03%     332.000us       4.611us            72
+                                            aten::fill_         0.03%     329.000us         0.03%     349.000us     349.000us             1
+                                             aten::rsub         0.03%     313.000us         0.29%       3.261ms      33.619us            97
+                                             aten::view         0.03%     288.000us         0.03%     288.000us       0.351us           821
+                                       aten::is_nonzero         0.02%     262.000us         0.22%       2.538ms      19.828us           128
+                                          aten::softmax         0.02%     249.000us         0.07%     829.000us      25.906us            32
+                                          aten::permute         0.02%     245.000us         0.02%     248.000us       1.722us           144
+                                          aten::reshape         0.02%     235.000us         0.03%     311.000us       4.785us            65
+                                           aten::unbind         0.02%     203.000us         0.02%     271.000us       2.823us            96
+                                          aten::resize_         0.02%     202.000us         0.02%     203.000us       1.515us           134
+                                           aten::expand         0.02%     192.000us         0.02%     193.000us       0.710us           272
+                                             aten::set_         0.02%     181.000us         0.02%     181.000us       3.068us            59
+                                              aten::max         0.02%     172.000us         0.03%     311.000us       9.719us            32
+                                         aten::isfinite         0.01%     146.000us         0.12%       1.361ms      42.531us            32
+                                          aten::detach_         0.01%      99.000us         0.01%      99.000us       1.010us            98
+cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFla...         0.01%      57.000us         0.01%      57.000us       0.094us           608
+                                           aten::unfold         0.00%      52.000us         0.00%      52.000us       0.361us           144
+                                            aten::isnan         0.00%      49.000us         0.07%     847.000us      26.469us            32
+                                          aten::__and__         0.00%      44.000us         0.10%       1.140ms      34.545us            33
+                                        aten::expand_as         0.00%      42.000us         0.00%      42.000us       0.875us            48
+                                  cudaStreamIsCapturing         0.00%      37.000us         0.00%      37.000us       0.184us           201
+                                   aten::_reshape_alias         0.00%      36.000us         0.00%      36.000us       0.554us            65
+                               cudaPointerGetAttributes         0.00%      31.000us         0.00%      31.000us       0.492us            63
+                                       aten::zeros_like         0.00%      10.000us         0.03%     380.000us     380.000us             1
+                                               aten::le         0.00%       9.000us         0.00%      12.000us      12.000us             1
+                                            aten::zero_         0.00%       6.000us         0.03%     355.000us     355.000us             1
+                                   cudaFuncSetAttribute         0.00%       4.000us         0.00%       4.000us       0.010us           420
+                                  cudaFuncGetAttributes         0.00%       3.000us         0.00%       3.000us       3.000us             1
+                                          aten::type_as         0.00%       2.000us         0.00%      47.000us      23.500us             2
+                                 cudaDeviceGetAttribute         0.00%       1.000us         0.00%       1.000us       0.022us            46
+                                   cudaGetSymbolAddress         0.00%       1.000us         0.00%       1.000us       1.000us             1
+                                       aten::lift_fresh         0.00%       0.000us         0.00%       0.000us       0.000us            98
+                                                detach_         0.00%       0.000us         0.00%       0.000us       0.000us            98
+                                            aten::alias         0.00%       0.000us         0.00%       0.000us       0.000us            48
+                                     cudaGetDeviceCount         0.00%       0.000us         0.00%       0.000us       0.000us             1
+                                    cudaPeekAtLastError         0.00%       0.000us         0.00%       0.000us       0.000us           192
+-------------------------------------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+Self CPU time total: 1.131s

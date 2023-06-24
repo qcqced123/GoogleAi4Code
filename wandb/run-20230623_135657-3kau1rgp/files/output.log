@@ -1,0 +1,72 @@
+Some weights of the model checkpoint at microsoft/deberta-v3-large were not used when initializing DebertaV2Model: ['lm_predictions.lm_head.LayerNorm.bias', 'mask_predictions.LayerNorm.bias', 'lm_predictions.lm_head.LayerNorm.weight', 'mask_predictions.dense.weight', 'mask_predictions.classifier.bias', 'lm_predictions.lm_head.dense.weight', 'mask_predictions.classifier.weight', 'lm_predictions.lm_head.bias', 'lm_predictions.lm_head.dense.bias', 'mask_predictions.dense.bias', 'mask_predictions.LayerNorm.weight']
+- This IS expected if you are initializing DebertaV2Model from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaV2Model from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  0%|                                                                                                            | 0/111421 [00:00<?, ?it/s]
+[1/5] Train & Validation
+prompt: tensor([[     1, 128001,   4738,   2367,    514, 128001,    265,  15355,   1974,
+            267,    448,   1389, 128001,  45916,    265,   1710,   5541,   1917,
+            268,   1389, 128001,    838,    262,   1040, 128001,    678,   1550,
+            468,    288,    262,    514, 128001, 110699,    265,    305,    830,
+         128001,   2367,    514, 128001,  17516,    352,   5799,   1204,    263,
+           2142,   2982,   5361, 128001,    347,    310,    830, 128001,    514,
+           2236, 128001,      2, 128002,   2184,    269,  43858,    952,    803,
+         128002,  41339,    268,   2283,  33918,   2184,   1954,   9764,   2674,
+           6325,    843,   9502,   2021,    896,   2890,   8353,  10558,    376,
+          18767,   1710,   5903, 128002,   1204,   1010,  41049,  89844,    649,
+           1010, 128002,  64143, 110699,   2184,   1954,   9764,  10558,    376,
+         128002,   2184,    761,   1009,   4738,  15355,   3237, 128002,   1204,
+           1010,   1710,   5903,   1348,    407,   6898,   1010,   9764,   1710,
+           5903,   6898,    264,  91341,   6898,  91341,   3884,   3770, 128002,
+           1204,   1204,   1010,   1954,   9764,  10558,    376, 128002,   6306,
+           8358,  33918,  14434,  35512,  33918,    283,  28944,    297,   6306,
+           2164,   6107,    283,  41339,    268,  41339,    268,    487,   1009,
+            881, 128002,   2982,   1348,    407,  58707,   2285,  20751,   7148,
+         128002,  58707,   2285,  20751,   2271,   1941,   1348,    407, 128002,
+           1204,   2184,   2184,   1954,   9764,   1710,   5903,  10558,    376,
+           2184,   2184,   1710,   5903, 128002,   2184,    761, 128002,   6306,
+          67927,    283,    845,    407,   2184,    845,    407,    623,  91341,
+           4219,  89061,   3210,   1710,   5903,  10313,   2184,  91341,   1010,
+            845,    407,    623,  91341,   4219,  89061,   3210,   1710,   5903,
+          10313,   1010,  91341,   2783,   3361,    845,    407,    623,  91341,
+           4219,  89061,   3210,   1710,   5903,  10313,   2783,   6898,  91341,
+         128002,  41339,    268, 110699,  64143, 110699,  66371,    683,  29978,
+            268,    767,    456, 128002,    291,  24233,    404,   1192,    699,
+            275,    386,   2136,   7027,   7296,   2627,    278,    269,   3034,
+            293,    262,   4219,  89061,  24233,  56177,   1115,   1321,    270,
+            738,    422,   1550,    656,   2136,   4507,    264,   2929,   6306,
+          36221,  11751,    283,  76767,   7464,  16373,   6306,  67927,    283,
+            845,    407,    514,   2466,  91341,   1092,    584,   2673,    865,
+           2905,    845,    407,    623,  91341,   3210,    514,   1844,    281,
+            499,    267,    262,    623,    364, 128002,    292,  33566,  29274,
+           6520,   6306,   2866,  41049,  89844,    649,    292,  33566,  29274,
+          89844,    473,   6306,  41049,  35814,  29537,  23097,  41049,  89844,
+            649,  64143,  89844,    649,  41049,  35814,  29537,   7991,    278,
+            649,    456,    514,  89844,    649,   1340,   5695,  64143,  64143,
+            845,    407,    514,  16439,    514,   9183,    686,  64143,   9183,
+           1067,  64143, 128002,   2184,  41049,  89844,    649,   2184,   2118,
+           2184,    269,   2886,   5497, 128002,    292,  33566,  29274,  11609,
+           6306,  19352,  61759,   4478,  30773,  58707,   2285,  20751,  19352,
+          61759,   4478,  30773,  46738,    268,    803,   1101,   1039,    376,
+            767,   7991,   3613,    376,   4094,    565,    767,   1340,   2184,
+           2184, 128002,   6306,   2367,   1967,    283,  92040,    795,  92040,
+            795,   1588,   2184, 128002,   2118,   2367,   1974,    267,   2184,
+           2184,    269,   2886,   5497,   5497,   2118,   2367,   1974,    267,
+           1010,   1010,    269,   2886,   5497,   5497, 128002,   1710,   5903,
+           2184,   1710,   5903,   2269,    767,    298,   1123,    376,   1123,
+          41339,    268,   2795,  33918,    514,   2184,   1710,   5903, 128002,
+          41339,    268,    315,    297,  33918,   2184,   1710,   5541,   1917,
+            268, 128002,      2]])
+Traceback (most recent call last):                                                                               | 0/111421 [00:00<?, ?it/s]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 23, in <module>
+    main('pairwise_trainer.json', CFG)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 18, in main
+    getattr(train_loop, cfg.loop)(cfg)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/train_loop.py", line 34, in train_loop
+    train_loss = train_input.train_fn(
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/trainer.py", line 283, in train_fn
+    scaler.scale(loss).backward(retain_graph=True)
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Function 'AddmmBackward0' returned nan values in its 0th output.

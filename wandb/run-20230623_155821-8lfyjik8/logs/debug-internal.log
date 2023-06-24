@@ -1,0 +1,188 @@
+2023-06-23 15:58:21,722 INFO    StreamThr :67860 [internal.py:wandb_internal():86] W&B internal server running at pid: 67860, started at: 2023-06-23 15:58:21.722288
+2023-06-23 15:58:21,723 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status
+2023-06-23 15:58:21,727 INFO    WriterThread:67860 [datastore.py:open_for_write():85] open: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/run-8lfyjik8.wandb
+2023-06-23 15:58:21,727 DEBUG   SenderThread:67860 [sender.py:send():375] send: header
+2023-06-23 15:58:21,746 DEBUG   SenderThread:67860 [sender.py:send():375] send: run
+2023-06-23 15:58:22,190 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: check_version
+2023-06-23 15:58:22,190 INFO    SenderThread:67860 [dir_watcher.py:__init__():219] watching files in: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files
+2023-06-23 15:58:22,190 INFO    SenderThread:67860 [sender.py:_start_run_threads():1124] run started: 8lfyjik8 with start time 1687503501.72306
+2023-06-23 15:58:22,190 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: summary_record
+2023-06-23 15:58:22,191 INFO    SenderThread:67860 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-23 15:58:22,191 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: check_version
+2023-06-23 15:58:22,273 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: run_start
+2023-06-23 15:58:22,279 DEBUG   HandlerThread:67860 [system_info.py:__init__():31] System info init
+2023-06-23 15:58:22,279 DEBUG   HandlerThread:67860 [system_info.py:__init__():46] System info init done
+2023-06-23 15:58:22,279 INFO    HandlerThread:67860 [system_monitor.py:start():181] Starting system monitor
+2023-06-23 15:58:22,279 INFO    SystemMonitor:67860 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-06-23 15:58:22,279 INFO    HandlerThread:67860 [system_monitor.py:probe():201] Collecting system info
+2023-06-23 15:58:22,280 INFO    SystemMonitor:67860 [interfaces.py:start():190] Started cpu monitoring
+2023-06-23 15:58:22,280 INFO    SystemMonitor:67860 [interfaces.py:start():190] Started disk monitoring
+2023-06-23 15:58:22,281 INFO    SystemMonitor:67860 [interfaces.py:start():190] Started gpu monitoring
+2023-06-23 15:58:22,281 INFO    SystemMonitor:67860 [interfaces.py:start():190] Started memory monitoring
+2023-06-23 15:58:22,281 INFO    SystemMonitor:67860 [interfaces.py:start():190] Started network monitoring
+2023-06-23 15:58:22,292 DEBUG   HandlerThread:67860 [system_info.py:probe():195] Probing system
+2023-06-23 15:58:22,296 DEBUG   HandlerThread:67860 [system_info.py:_probe_git():180] Probing git
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_info.py:_probe_git():188] Probing git done
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_info.py:probe():240] Probing system done
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_monitor.py:probe():210] {'os': 'Linux-5.19.0-45-generic-x86_64-with-glibc2.35', 'python': '3.9.13', 'heartbeatAt': '2023-06-23T06:58:22.293027', 'startedAt': '2023-06-23T06:58:21.714319', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py', 'codePath': 'train.py', 'git': {'remote': 'https://github.com/qcqced123/GoogleAi4Code.git', 'commit': 'acd8a95e843abeb749934d1f0dbbb9d133cc2301'}, 'email': '97833081+qcqced123@users.noreply.github.com', 'root': '/home/qcqced/바탕화면/ML_Test/GoogleAi4Code', 'host': 'qcqced-B550M-H', 'username': 'qcqced', 'executable': '/home/qcqced/anaconda3/bin/python', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 2.935916666666667, 'min': 2200.0, 'max': 3700.0}, 'cpu_freq_per_core': [{'current': 2.2, 'min': 2200.0, 'max': 3700.0}, {'current': 2.2, 'min': 2200.0, 'max': 3700.0}, {'current': 2.2, 'min': 2200.0, 'max': 3700.0}, {'current': 3.7, 'min': 2200.0, 'max': 3700.0}, {'current': 2.897, 'min': 2200.0, 'max': 3700.0}, {'current': 2.931, 'min': 2200.0, 'max': 3700.0}, {'current': 3.743, 'min': 2200.0, 'max': 3700.0}, {'current': 3.288, 'min': 2200.0, 'max': 3700.0}, {'current': 3.203, 'min': 2200.0, 'max': 3700.0}, {'current': 3.796, 'min': 2200.0, 'max': 3700.0}, {'current': 2.873, 'min': 2200.0, 'max': 3700.0}, {'current': 2.2, 'min': 2200.0, 'max': 3700.0}], 'disk': {'total': 680.4048233032227, 'used': 165.21739196777344}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}], 'memory': {'total': 23.370285034179688}}
+2023-06-23 15:58:22,302 INFO    HandlerThread:67860 [system_monitor.py:probe():211] Finished collecting system info
+2023-06-23 15:58:22,302 INFO    HandlerThread:67860 [system_monitor.py:probe():214] Publishing system info
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_info.py:_save_pip():67] Saving pip packages done
+2023-06-23 15:58:22,302 DEBUG   HandlerThread:67860 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-06-23 15:58:23,191 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_created():278] file/dir created: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/conda-environment.yaml
+2023-06-23 15:58:23,192 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_created():278] file/dir created: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-summary.json
+2023-06-23 15:58:23,192 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_created():278] file/dir created: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/requirements.txt
+2023-06-23 15:58:27,089 DEBUG   HandlerThread:67860 [system_info.py:_save_conda():86] Saving conda packages done
+2023-06-23 15:58:27,089 INFO    HandlerThread:67860 [system_monitor.py:probe():216] Finished publishing system info
+2023-06-23 15:58:27,093 DEBUG   SenderThread:67860 [sender.py:send():375] send: files
+2023-06-23 15:58:27,093 INFO    SenderThread:67860 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-06-23 15:58:27,094 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:27,096 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-23 15:58:27,096 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: stop_status
+2023-06-23 15:58:27,193 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/conda-environment.yaml
+2023-06-23 15:58:27,193 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_created():278] file/dir created: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-metadata.json
+2023-06-23 15:58:27,329 DEBUG   SenderThread:67860 [sender.py:send():375] send: telemetry
+2023-06-23 15:58:27,665 INFO    wandb-upload_0:67860 [upload_job.py:push():137] Uploaded file /tmp/tmprmdujk4bwandb/zgp0amvy-wandb-metadata.json
+2023-06-23 15:58:32,330 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:37,331 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:42,097 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: stop_status
+2023-06-23 15:58:42,097 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: stop_status
+2023-06-23 15:58:42,196 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_created():278] file/dir created: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:43,275 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:44,197 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:46,197 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:48,198 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:48,921 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:50,198 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:52,102 DEBUG   SenderThread:67860 [sender.py:send():375] send: exit
+2023-06-23 15:58:52,102 INFO    SenderThread:67860 [sender.py:send_exit():598] handling exit code: 1
+2023-06-23 15:58:52,102 INFO    SenderThread:67860 [sender.py:send_exit():600] handling runtime: 29
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:send_exit():606] send defer
+2023-06-23 15:58:52,104 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,104 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 0
+2023-06-23 15:58:52,104 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 1
+2023-06-23 15:58:52,104 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,104 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 1
+2023-06-23 15:58:52,104 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-06-23 15:58:52,104 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 2
+2023-06-23 15:58:52,104 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,104 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 2
+2023-06-23 15:58:52,104 INFO    HandlerThread:67860 [system_monitor.py:finish():190] Stopping system monitor
+2023-06-23 15:58:52,104 DEBUG   SystemMonitor:67860 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-06-23 15:58:52,104 INFO    HandlerThread:67860 [interfaces.py:finish():202] Joined cpu monitor
+2023-06-23 15:58:52,105 DEBUG   SystemMonitor:67860 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-06-23 15:58:52,105 INFO    HandlerThread:67860 [interfaces.py:finish():202] Joined disk monitor
+2023-06-23 15:58:52,105 DEBUG   SystemMonitor:67860 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-06-23 15:58:52,126 INFO    HandlerThread:67860 [interfaces.py:finish():202] Joined gpu monitor
+2023-06-23 15:58:52,126 INFO    HandlerThread:67860 [interfaces.py:finish():202] Joined memory monitor
+2023-06-23 15:58:52,126 INFO    HandlerThread:67860 [interfaces.py:finish():202] Joined network monitor
+2023-06-23 15:58:52,127 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 3
+2023-06-23 15:58:52,127 DEBUG   SenderThread:67860 [sender.py:send():375] send: stats
+2023-06-23 15:58:52,127 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,127 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 3
+2023-06-23 15:58:52,127 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 4
+2023-06-23 15:58:52,127 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,127 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 4
+2023-06-23 15:58:52,127 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-06-23 15:58:52,127 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 5
+2023-06-23 15:58:52,127 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,127 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 5
+2023-06-23 15:58:52,128 DEBUG   SenderThread:67860 [sender.py:send():375] send: summary
+2023-06-23 15:58:52,128 INFO    SenderThread:67860 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-06-23 15:58:52,128 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,128 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-06-23 15:58:52,128 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 6
+2023-06-23 15:58:52,128 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,128 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 6
+2023-06-23 15:58:52,128 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,128 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-06-23 15:58:52,130 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: status_report
+2023-06-23 15:58:52,199 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-summary.json
+2023-06-23 15:58:52,357 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 7
+2023-06-23 15:58:52,357 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:52,357 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 7
+2023-06-23 15:58:52,357 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:52,357 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-06-23 15:58:53,103 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-23 15:58:53,199 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/config.yaml
+2023-06-23 15:58:54,133 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 8
+2023-06-23 15:58:54,134 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: poll_exit
+2023-06-23 15:58:54,134 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:54,134 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 8
+2023-06-23 15:58:54,134 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:54,134 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-06-23 15:58:54,139 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 9
+2023-06-23 15:58:54,139 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:54,140 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 9
+2023-06-23 15:58:54,140 DEBUG   SenderThread:67860 [sender.py:send():375] send: artifact
+2023-06-23 15:58:54,199 INFO    Thread-12 :67860 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:55,066 INFO    SenderThread:67860 [sender.py:send_artifact():1474] sent artifact job-https___github.com_qcqced123_GoogleAi4Code.git_train.py - {'id': 'QXJ0aWZhY3Q6NDk2MjU0Njk1', 'digest': 'ba055d3aca27a2f986f2b4eb1928af82', 'state': 'COMMITTED', 'aliases': [{'artifactCollectionName': 'job-https___github.com_qcqced123_GoogleAi4Code.git_train.py', 'alias': 'latest'}, {'artifactCollectionName': 'job-https___github.com_qcqced123_GoogleAi4Code.git_train.py', 'alias': 'v3'}], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjc3NzE4MTE4', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDk2MjU0Njk1', 'versionIndex': 3}}, 'version': 'v3'}
+2023-06-23 15:58:55,066 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:55,066 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-06-23 15:58:55,066 INFO    SenderThread:67860 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-06-23 15:58:55,200 INFO    SenderThread:67860 [dir_watcher.py:finish():395] scan: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files
+2023-06-23 15:58:55,200 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log output.log
+2023-06-23 15:58:55,200 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/config.yaml config.yaml
+2023-06-23 15:58:55,200 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-metadata.json wandb-metadata.json
+2023-06-23 15:58:55,200 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/requirements.txt requirements.txt
+2023-06-23 15:58:55,204 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/conda-environment.yaml conda-environment.yaml
+2023-06-23 15:58:55,206 INFO    SenderThread:67860 [dir_watcher.py:finish():409] scan save: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-summary.json wandb-summary.json
+2023-06-23 15:58:55,206 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 10
+2023-06-23 15:58:55,206 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:55,207 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 10
+2023-06-23 15:58:55,209 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:55,209 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-06-23 15:58:55,209 INFO    SenderThread:67860 [file_pusher.py:finish():167] shutting down file pusher
+2023-06-23 15:58:55,731 INFO    wandb-upload_1:67860 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/config.yaml
+2023-06-23 15:58:55,765 INFO    wandb-upload_0:67860 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/output.log
+2023-06-23 15:58:55,778 INFO    wandb-upload_4:67860 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/wandb-summary.json
+2023-06-23 15:58:55,780 INFO    wandb-upload_2:67860 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/requirements.txt
+2023-06-23 15:58:55,851 INFO    wandb-upload_3:67860 [upload_job.py:push():137] Uploaded file /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/files/conda-environment.yaml
+2023-06-23 15:58:56,051 INFO    Thread-11 :67860 [sender.py:transition_state():626] send defer: 11
+2023-06-23 15:58:56,052 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:56,052 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 11
+2023-06-23 15:58:56,052 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:56,052 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-06-23 15:58:56,052 INFO    SenderThread:67860 [file_pusher.py:join():172] waiting for file pusher
+2023-06-23 15:58:56,052 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 12
+2023-06-23 15:58:56,053 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:56,053 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 12
+2023-06-23 15:58:56,053 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:56,053 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-06-23 15:58:56,249 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 13
+2023-06-23 15:58:56,249 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:56,249 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 13
+2023-06-23 15:58:56,250 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:56,250 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-06-23 15:58:56,250 INFO    SenderThread:67860 [sender.py:transition_state():626] send defer: 14
+2023-06-23 15:58:56,250 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: defer
+2023-06-23 15:58:56,250 DEBUG   SenderThread:67860 [sender.py:send():375] send: final
+2023-06-23 15:58:56,250 INFO    HandlerThread:67860 [handler.py:handle_request_defer():170] handle defer: 14
+2023-06-23 15:58:56,250 DEBUG   SenderThread:67860 [sender.py:send():375] send: footer
+2023-06-23 15:58:56,250 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: defer
+2023-06-23 15:58:56,250 INFO    SenderThread:67860 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-06-23 15:58:56,251 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: poll_exit
+2023-06-23 15:58:56,251 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: poll_exit
+2023-06-23 15:58:56,251 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: server_info
+2023-06-23 15:58:56,251 DEBUG   SenderThread:67860 [sender.py:send_request():402] send_request: server_info
+2023-06-23 15:58:56,251 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: get_summary
+2023-06-23 15:58:56,253 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: sampled_history
+2023-06-23 15:58:56,432 INFO    MainThread:67860 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-06-23 15:58:56,432 INFO    MainThread:67860 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-06-23 15:58:56,432 INFO    MainThread:67860 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2023-06-23 15:58:56,433 DEBUG   HandlerThread:67860 [handler.py:handle_request():144] handle_request: shutdown
+2023-06-23 15:58:56,433 INFO    HandlerThread:67860 [handler.py:finish():845] shutting down handler
+2023-06-23 15:58:57,251 INFO    WriterThread:67860 [datastore.py:close():298] close: /home/qcqced/바탕화면/ML_Test/GoogleAi4Code/wandb/run-20230623_155821-8lfyjik8/run-8lfyjik8.wandb
+2023-06-23 15:58:57,432 INFO    SenderThread:67860 [sender.py:finish():1550] shutting down sender
+2023-06-23 15:58:57,433 INFO    SenderThread:67860 [file_pusher.py:finish():167] shutting down file pusher
+2023-06-23 15:58:57,433 INFO    SenderThread:67860 [file_pusher.py:join():172] waiting for file pusher

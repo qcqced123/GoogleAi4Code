@@ -1,0 +1,25 @@
+Some weights of the model checkpoint at microsoft/deberta-v3-large were not used when initializing DebertaV2Model: ['lm_predictions.lm_head.LayerNorm.weight', 'mask_predictions.classifier.weight', 'lm_predictions.lm_head.dense.bias', 'mask_predictions.classifier.bias', 'lm_predictions.lm_head.LayerNorm.bias', 'lm_predictions.lm_head.dense.weight', 'mask_predictions.dense.weight', 'mask_predictions.LayerNorm.weight', 'mask_predictions.dense.bias', 'mask_predictions.LayerNorm.bias', 'lm_predictions.lm_head.bias']
+- This IS expected if you are initializing DebertaV2Model from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaV2Model from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  0%|                                                                                                            | 0/111421 [00:00<?, ?it/s]
+[1/5] Train & Validation
+torch.Size([1, 471, 1024])
+
+  0%|                                                                                                 | 2/111421 [00:02<39:37:28,  1.28s/it]
+torch.Size([1, 787, 1024])
+[tensor([[-0.5910]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-0.8814]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.1223]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-0.8541]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.3501]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.2681]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.1328]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.5255]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.5551]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.5108]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.3186]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-0.9955]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.6240]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.5108]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.6084]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.2871]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-0.7433]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.5812]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.6187]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.7131]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.4457]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-0.8600]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.3275]], device='cuda:0', grad_fn=<AddmmBackward0>), tensor([[-1.3792]], device='cuda:0', grad_fn=<AddmmBackward0>)]
+torch.Size([1, 1942, 1024])
+Traceback (most recent call last):                                                                    | 2/111421 [00:02<39:37:28,  1.28s/it]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 23, in <module>
+    main('pairwise_trainer.json', CFG)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 18, in main
+    getattr(train_loop, cfg.loop)(cfg)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/train_loop.py", line 34, in train_loop
+    train_loss = train_input.train_fn(
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/trainer.py", line 282, in train_fn
+    scaler.scale(loss).backward()
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Function 'AddmmBackward0' returned nan values in its 2th output.
