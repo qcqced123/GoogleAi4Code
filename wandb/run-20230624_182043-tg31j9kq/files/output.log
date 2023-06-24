@@ -1,0 +1,52 @@
+Some weights of the model checkpoint at microsoft/deberta-v3-large were not used when initializing DebertaV2Model: ['lm_predictions.lm_head.dense.bias', 'mask_predictions.classifier.bias', 'mask_predictions.classifier.weight', 'lm_predictions.lm_head.LayerNorm.weight', 'lm_predictions.lm_head.dense.weight', 'mask_predictions.LayerNorm.weight', 'mask_predictions.LayerNorm.bias', 'lm_predictions.lm_head.LayerNorm.bias', 'mask_predictions.dense.bias', 'mask_predictions.dense.weight', 'lm_predictions.lm_head.bias']
+- This IS expected if you are initializing DebertaV2Model from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing DebertaV2Model from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+  0%|                                                                                                            | 0/111421 [00:00<?, ?it/s]
+[1/5] Train & Validation
+torch.Size([1, 471, 1024])
+[tensor([[0.3372]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.4397]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.3467]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.8633]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.6372]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.3035]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.0078]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-0.2284]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.2617]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.1837]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-0.2148]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.4397]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.9062]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.1992]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.7227]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.3291]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.8140]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[-0.5210]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.2051]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.2002]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.9692]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.8975]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.3457]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.3342]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.5459]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.7642]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.1631]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.6099]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[0.2881]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.5439]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.1885]], device='cuda:0', dtype=torch.float16,
+       grad_fn=<AddmmBackward0>), tensor([[1.0254]], device='cuda:0', dtype=torch.float16,
+Traceback (most recent call last):                                                                               | 0/111421 [00:00<?, ?it/s]
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 23, in <module>
+    main('pairwise_trainer.json', CFG)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/train.py", line 18, in main
+    getattr(train_loop, cfg.loop)(cfg)
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/train_loop.py", line 34, in train_loop
+    train_loss = train_input.train_fn(
+  File "/home/qcqced/바탕화면/ML_Test/GoogleAi4Code/trainer/trainer.py", line 281, in train_fn
+    scaler.scale(loss).backward()
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/_tensor.py", line 487, in backward
+    torch.autograd.backward(
+  File "/home/qcqced/anaconda3/lib/python3.9/site-packages/torch/autograd/__init__.py", line 200, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: Function 'ToCopyBackward0' returned nan values in its 0th output.

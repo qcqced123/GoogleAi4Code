@@ -34,7 +34,7 @@
         "gradient_checkpoint": true,
         "clipping_grad": true,
         "n_gradient_accumulation_steps": 1,
-        "max_grad_norm": 10
+        "max_grad_norm": 1000
     },
     "loss_options": {
         "loss_fn": "MarginRankingLoss",
@@ -47,7 +47,7 @@
     "optimizer_options": {
         "optimizer": "AdamW",
         "llrd": true,
-        "layerwise_lr": 3e-4,
+        "layerwise_lr": 5e-5,
         "layerwise_lr_decay": 0.9,
         "layerwise_weight_decay": 1e-2,
         "layerwise_adam_epsilon": 1e-6,
@@ -67,12 +67,12 @@
         "anneal_strategy": "cos"
     },
     "model_utils": {
-        "init_weight": "xavier_normal",
+        "init_weight": "normal",
         "stop_mode": "max",
         "freeze": true,
-        "num_freeze": 12,
+        "num_freeze": 16,
         "reinit": true,
-        "num_reinit": 4,
+        "num_reinit": 0,
         "awp": false,
         "nth_awp_start_epoch": 2,
         "awp_eps": 1e-2,
